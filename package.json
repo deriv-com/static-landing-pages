@@ -1,0 +1,14 @@
+{
+  "name": "translations-static",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-translations.js",
+  "scripts": {
+    "translate": "node ./generate-translations"
+  },
+  "author": "Amir Ali",
+  "license": "ISC",
+  "dependencies": {
+    "mustache": "^4.2.0"
+  }
+}
