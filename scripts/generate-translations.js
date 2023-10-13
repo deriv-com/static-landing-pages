@@ -1,11 +1,12 @@
+const path = require("path");
 const fs = require("fs");
 const { insertStringsToHtmlFile } = require("./insert-string");
 
-const pagesDir = fs.readdirSync("./templates");
+const templatesDir = fs.readdirSync(path.resolve(__dirname, "../templates"));
 
-pagesDir.forEach((page) => {
+templatesDir.forEach((page) => {
   const template = fs.readFileSync(
-    `./templates/${page}/index.html`,
+    path.resolve(__dirname, `../templates/${page}/index.html`),
     "utf-8"
   );
 
@@ -16,7 +17,11 @@ pagesDir.forEach((page) => {
   for (const language of translations) {
     const translationJson = require(`../translations/${language}.json`);
 
-    const renderedHTML = insertStringsToHtmlFile(template, translationJson, language);
+    const renderedHTML = insertStringsToHtmlFile(
+      template,
+      translationJson,
+      language
+    );
 
     const outputDir = `./pages/${page}/${language}`;
 
