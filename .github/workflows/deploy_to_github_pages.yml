@@ -31,8 +31,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Wait for page generation
-        uses: ./.github/workflows/generate_and_push_crowdin_translations
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
