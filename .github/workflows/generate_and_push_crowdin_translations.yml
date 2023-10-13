@@ -58,6 +58,11 @@ jobs:
           echo "Running the generate pages script (generate-translations.js)"
           cd $(git rev-parse --show-toplevel)/scripts
           node generate-translations.js
+
+          echo "Setting up Git identity"
+          git config --global user.name "DerivFE"
+          git config --global user.email "80095553+DerivFE@users.noreply.github.com"
+
           git add .
           git commit -m "translations: 📚 generate and update pages"
           # Force push to this branch in case a previous run created it.
