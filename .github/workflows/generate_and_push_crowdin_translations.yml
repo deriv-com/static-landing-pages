@@ -60,10 +60,8 @@ jobs:
           node generate-translations.js
 
           echo "Setting up Git identity"
-          git config --global user.name "amir-deriv"
+          git config --global user.name "Amir Ali"
           git config --global user.email "129206554+amir-deriv@users.noreply.github.com"
 
-          git add .
-          git commit -m "translations: 📚 generate and update pages"
-          # Force push to this branch in case a previous run created it.
-          git push --set-upstream origin "main" -f
+          git commit -am "translations: 📚 generate and update pages"
+          git push
