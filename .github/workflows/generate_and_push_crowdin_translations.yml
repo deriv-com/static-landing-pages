@@ -27,7 +27,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Generate and push to Crowdin
+      - name: Extract translations from templates
         run: |
           npm install
           echo "Running the translation script (extract-translations.js)"
@@ -53,7 +53,7 @@ jobs:
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
     
-      - name: Generate and push to Crowdin
+      - name: Generate Pages
         run: |
           echo "Running the generate pages script (generate-translations.js)"
           cd $(git rev-parse --show-toplevel)/scripts
