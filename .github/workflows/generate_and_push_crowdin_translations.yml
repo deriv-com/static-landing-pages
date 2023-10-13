@@ -59,9 +59,6 @@ jobs:
           cd $(git rev-parse --show-toplevel)/scripts
           node generate-translations.js
 
-          echo "Setting up Git identity"
-          git config --global user.name "Amir Ali"
-          git config --global user.email "129206554+amir-deriv@users.noreply.github.com"
-
-          git commit -am "translations: 📚 generate and update pages"
-          git push
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "translations: 📚 generate and update pages"
