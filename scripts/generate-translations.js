@@ -1,15 +1,15 @@
 const fs = require("fs");
 const { insertStringsToHtmlFile } = require("./insert-string");
 
-const pagesDir = fs.readdirSync("./pages");
+const pagesDir = fs.readdirSync("./templates");
 
 pagesDir.forEach((page) => {
   const template = fs.readFileSync(
-    `./pages/${page}/template/index.html`,
+    `./templates/${page}/index.html`,
     "utf-8"
   );
 
-  const pageConfig = require(`../pages/${page}/page.config.js`);
+  const pageConfig = require(`../templates/${page}/page.config.js`);
 
   const translations = pageConfig.translations;
 

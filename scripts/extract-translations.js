@@ -27,12 +27,12 @@ const getKeyHash = (string) => crc32(string);
     const messages = [];
     const messages_json = {};
 
-    const pagesDir = fs.readdirSync(path.resolve(__dirname, "../pages"));
+    const pagesDir = fs.readdirSync(path.resolve(__dirname, "../templates"));
 
     pagesDir.forEach((page) => {
       try {
         const template = fs.readFileSync(
-          path.resolve(__dirname, `../pages/${page}/template/index.html`),
+          path.resolve(__dirname, `../templates/${page}/index.html`),
           "utf-8"
         );
 
