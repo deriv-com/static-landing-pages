@@ -27,6 +27,7 @@ jobs:
 
       - name: Generate and push to Crowdin
         run: |
+          npm install
           echo "Running the translation script (extract-translations.js)"
           cd $(git rev-parse --show-toplevel)/scripts
           node extract-translations.js
