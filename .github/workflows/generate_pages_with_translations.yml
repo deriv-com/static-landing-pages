@@ -8,8 +8,10 @@ permissions:
   statuses: write
 
 on:
-  schedule:
-    - cron: "0 */12 * * *" # Every 12 hours - https://crontab.guru/#0_*/12_*_*_*
+  push:
+    paths:
+      - 'templates/**'
+    branches: [ main ]
 
 jobs:
   crowdin:
@@ -25,12 +27,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Generate and push to Crowdin
+      - name: Extract translations and generate pages
         run: |
           npm install
-          echo "Running the translation script (extract-translations.js)"
+          echo "Running the translation script (generate-translations.js)"
           cd $(git rev-parse --show-toplevel)/scripts
           node extract-translations.js
+          node generate-translations.js
           new_messages_json_hash="$(git hash-object $(git rev-parse --show-toplevel)/crowdin/messages.json)"
           echo "- [generated]: message.json hash is $new_messages_json_hash"
 

@@ -77,14 +77,11 @@ pageLanguagesArray.forEach((language) => {
 });
 
 // Create the page folder
-fs.mkdirSync(path.resolve(__dirname, `../pages/${pageName}`));
-
-// Create the page template folder
-fs.mkdirSync(path.resolve(__dirname, `../pages/${pageName}/template`));
+fs.mkdirSync(path.resolve(__dirname, `../templates/${pageName}`));
 
 // Create the page template file
 fs.writeFileSync(
-  path.resolve(__dirname, `../pages/${pageName}/template/index.html`),
+  path.resolve(__dirname, `../templates/${pageName}/index.html`),
   `<!DOCTYPE html>
 <html>
     <head>
@@ -103,7 +100,7 @@ fs.writeFileSync(
 
 // Create the page config file
 fs.writeFileSync(
-  path.resolve(__dirname, `../pages/${pageName}/page.config.js`),
+  path.resolve(__dirname, `../templates/${pageName}/page.config.js`),
   `module.exports = {
   title: "${pageTitle}",
   description: "${pageDescription}",
