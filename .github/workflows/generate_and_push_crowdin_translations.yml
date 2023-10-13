@@ -17,9 +17,6 @@ jobs:
   crowdin:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     strategy:
       matrix:
         node-version: [18.x]
@@ -30,11 +27,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract translations from templates
         run: |
+          branch_name="deriv_app_translations"
           npm install
           echo "Running the translation script (extract-translations.js)"
           cd $(git rev-parse --show-toplevel)/scripts
@@ -61,10 +57,28 @@ jobs:
 
       - name: Generate Pages
         run: |
+          git config --global user.name "amir-deriv"
+          git config --global user.email "amir-deriv@users.noreply.github.com"
+
           echo "Running the generate pages script (generate-translations.js)"
           cd $(git rev-parse --show-toplevel)/scripts
           node generate-translations.js
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "translations: 📚 generate and update pages"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Found no new template files that need to be merged with master. Not creating a PR."
+          else
+            echo "Found updated template files. page need to be merged with master. Creating a PR."
+
+            # Commit the newly downloaded files
+            cd $(git rev-parse --show-toplevel)
+            git add .
+            git commit -m "translations: 📚 sync template files with pages"
+
+            # Force push to this branch in case a previous run created it.
+            git push --set-upstream origin "$branch_name" -f
+
+            sudo apt install gh
+            gh auth login --with-token <<< ${{ github.token }}
+            gh pr close "$branch_name" || true
+            gh pr create --fill --base "master" --head "binary-com:$branch_name"
+          fi
