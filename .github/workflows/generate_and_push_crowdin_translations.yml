@@ -10,6 +10,8 @@ permissions:
 on:
   schedule:
     - cron: "0 */12 * * *" # Every 12 hours - https://crontab.guru/#0_*/12_*_*_*
+  push:
+    branches: [main]
 
 jobs:
   crowdin:
@@ -50,3 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+    
+      - name: Generate and push to Crowdin
+        run: |
+          node generate-translations.js
