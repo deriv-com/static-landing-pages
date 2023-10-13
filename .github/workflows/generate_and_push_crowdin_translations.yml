@@ -65,24 +65,10 @@ jobs:
           cd $(git rev-parse --show-toplevel)/scripts
           node generate-translations.js
 
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "Found no new template files that need to be merged with master. Not creating a PR."
-          else
-            echo "Found updated template files. page need to be merged with master. Creating a PR."
-
-            chmod 664 .git/COMMIT_EDITMSG 
-
-
-            # Commit the newly downloaded files
-            cd $(git rev-parse --show-toplevel)
-            git add .
-            git commit -m "translations: 📚 sync template files with pages"
-
-            # Force push to this branch in case a previous run created it.
-            git push --set-upstream origin "$branch_name" -f
-
-            sudo apt install gh
-            gh auth login --with-token <<< ${{ github.token }}
-            gh pr close "$branch_name" || true
-            gh pr create --fill --base "master" --head "binary-com:$branch_name"
-          fi
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: Amir Ali
+          author_email: amir.ali@deriv.com
+          message: 'translations: 📚 sync translations with crowdin'
+          add: '.'
