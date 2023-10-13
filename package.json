@@ -4,11 +4,15 @@
   "description": "",
   "main": "generate-translations.js",
   "scripts": {
-    "translate": "node ./generate-translations"
+    "extract-translations": "node ./scripts/extract-translations",
+    "generate-translations": "node ./scripts/generate-translations"
   },
   "author": "Amir Ali",
   "license": "ISC",
   "dependencies": {
+    "commander": "^11.0.0",
+    "crc-32": "^1.2.2",
+    "jsdom": "^22.1.0",
     "mustache": "^4.2.0"
   }
 }
