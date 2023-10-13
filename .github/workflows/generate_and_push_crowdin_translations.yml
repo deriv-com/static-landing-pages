@@ -61,6 +61,7 @@ jobs:
           git config --global user.email "amir-deriv@users.noreply.github.com"
 
           echo "Running the generate pages script (generate-translations.js)"
+
           cd $(git rev-parse --show-toplevel)/scripts
           node generate-translations.js
 
