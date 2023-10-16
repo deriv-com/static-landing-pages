@@ -11,12 +11,9 @@ on:
   pull_request:
     types:
       - opened
-    branches:
-      - main
-    paths:
-      - '**.json'
+
 jobs:
-  crowdin:
+  generate_pages:
     runs-on: ubuntu-latest
 
     strategy:
