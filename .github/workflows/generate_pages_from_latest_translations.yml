@@ -9,13 +9,10 @@ permissions:
 
 on:
   pull_request:
-    types:
-      - opened
     branches:
-        - main
-        - l10n_crowdin_translations
-        - 'translations/*'
-        - 'translations/l10n_crowdin_translations'
+      - main
+    paths:
+      - "translations/l10n_crowdin/**"
 
 jobs:
   generate_pages:
@@ -48,5 +45,3 @@ jobs:
         with:
           branch: translations/l10n_crowdin_translations
           base: main
-      
-
