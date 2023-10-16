@@ -48,25 +48,13 @@ jobs:
           download_translations: true
           localization_branch_name: l10n_crowdin_translations
 
-          create_pull_request: false
+          create_pull_request: true
+          pull_request_title: "translations: 📚 sync translations with crowdin"
+          pull_request_body: "translations: 📚 sync translations with crowdin"
+          pull_request_base_branch_name: "main"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
-
-      - name: Generate Pages
-        run: |
-          current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-
-          echo "Running the generate pages script (generate-translations.js)"
-
-          cd $(git rev-parse --show-toplevel)/scripts
-          node generate-translations.js
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5.0.2
-        with:
-          branch: l10n_crowdin_translations
-          base: main
       
 

@@ -1,0 +1,48 @@
+name: Generate and push Crowdin translations
+
+permissions:
+  actions: write
+  checks: write
+  contents: write
+  pull-requests: write
+  statuses: write
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'translations/**'
+jobs:
+  crowdin:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Generate Pages
+        run: |
+          current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          echo "Running the generate pages script (generate-translations.js)"
+
+          cd $(git rev-parse --show-toplevel)/scripts
+          node generate-translations.js
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5.0.2
+        with:
+          branch: l10n_crowdin_translations
+          base: main
+      
+
