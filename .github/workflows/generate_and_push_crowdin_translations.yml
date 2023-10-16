@@ -74,4 +74,3 @@ jobs:
         uses: actions-js/push@v1.4
         with:
           github_token: ${{ secrets.GH_PAT }}
-          branch: l10n_crowdin_translations
