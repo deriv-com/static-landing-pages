@@ -8,11 +8,10 @@ permissions:
   statuses: write
 
 on:
-  pull_request:
-    types: 
-      - opened
-    paths:
-      - "**.json"
+  workflow_run:
+    workflows: ["Sync Translations"]
+    types:
+      - completed
 
 jobs:
   build:

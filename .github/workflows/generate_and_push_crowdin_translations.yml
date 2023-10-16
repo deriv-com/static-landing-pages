@@ -1,4 +1,4 @@
-name: Generate and push Crowdin translations
+name: Sync Translations
 
 permissions:
   actions: write
