@@ -40,7 +40,19 @@ jobs:
           new_messages_json_hash="$(git hash-object $(git rev-parse --show-toplevel)/crowdin/messages.json)"
           echo "- [generated]: message.json hash is $new_messages_json_hash"
 
-     
+      - name: Synchronize with Crowdin
+        uses: crowdin/github-action@v1
+        with:
+          upload_sources: true
+          upload_translations: true
+          download_translations: true
+          localization_branch_name: l10n_crowdin_translations
+
+          create_pull_request: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
       - name: Generate Pages
         run: |
@@ -50,7 +62,11 @@ jobs:
 
           cd $(git rev-parse --show-toplevel)/scripts
           node generate-translations.js
-      - uses: stefanzweifel/git-auto-commit-action@v5
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5.0.2
         with:
           branch: l10n_crowdin_translations
+          base: main
+      
 
