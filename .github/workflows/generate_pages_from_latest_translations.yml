@@ -1,4 +1,4 @@
-name: Generate and push Crowdin translations
+name: Generate pages
 
 permissions:
   actions: write
@@ -9,13 +9,14 @@ permissions:
 
 on:
   pull_request:
+    types: opened
     branches:
       - main
     paths:
       - "translations/l10n_crowdin/**"
 
 jobs:
-  generate_pages:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
