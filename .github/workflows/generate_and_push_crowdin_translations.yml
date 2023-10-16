@@ -69,5 +69,7 @@ jobs:
 
           cd $(git rev-parse --show-toplevel)/scripts
           node generate-translations.js
-          git checkout l10n_crowdin_translations
-          git commit -am "translations: 📚 sync pages with translations"
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: l10n_crowdin_translations
+
