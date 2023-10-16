@@ -9,10 +9,12 @@ permissions:
 
 on:
   pull_request:
+    types:
+      - opened
     branches:
-      - main
+      - translations/**
     paths:
-      - 'translations/**'
+      - '**.json'
 jobs:
   crowdin:
     runs-on: ubuntu-latest
