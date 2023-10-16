@@ -69,8 +69,5 @@ jobs:
 
           cd $(git rev-parse --show-toplevel)/scripts
           node generate-translations.js
-
-      - name: GitHub Commit & Push
-        uses: actions-js/push@v1.4
-        with:
-          github_token: ${{ secrets.GH_PAT }}
+          git checkout l10n_crowdin_translations
+          git commit -am "translations: 📚 sync pages with translations"
