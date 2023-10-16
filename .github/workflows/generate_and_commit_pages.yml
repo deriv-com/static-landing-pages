@@ -42,5 +42,9 @@ jobs:
 
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+
+          git checkout translations/l10n_crowdin
+
           git add .
           git commit -m "Update pages ${current_date}"
+          git push origin translations/l10n_crowdin
