@@ -11,6 +11,11 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+        - main
+        - l10n_crowdin_translations
+        - 'translations/*'
+        - 'translations/l10n_crowdin_translations'
 
 jobs:
   generate_pages:
@@ -41,7 +46,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5.0.2
         with:
-          branch: l10n_crowdin_translations
+          branch: translations/l10n_crowdin_translations
           base: main
       
 
