@@ -9,11 +9,10 @@ permissions:
 
 on:
   pull_request:
-    types: opened
-    branches:
-      - main
+    types: 
+      - opened
     paths:
-      - "translations/l10n_crowdin/**"
+      - "**.json"
 
 jobs:
   build:
@@ -44,5 +43,5 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5.0.2
         with:
-          branch: translations/l10n_crowdin_translations
+          branch: translations/l10n_crowdin
           base: main
