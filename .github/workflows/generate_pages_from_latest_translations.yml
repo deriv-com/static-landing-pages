@@ -12,7 +12,7 @@ on:
     types:
       - opened
     branches:
-      - translations/**
+      - main
     paths:
       - '**.json'
 jobs:
