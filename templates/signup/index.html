@@ -2,32 +2,253 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title class="element__translation_string__element">Deriv | Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&family=Ubuntu:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        #about-2 {
+            margin: 0;
+            max-width: none;
+            padding: 0;
+            margin-top: -70px;
+        }
+    </style>
 </head>
 
 <body>
-    <header>
-        <h1>{{ welcome_message }}</h1>
-    </header>
+    <div id="signup-form-container"
+        class="grid md:grid-cols-2 max-md:grid-rows-[auto_1fr] gap-8 max-w-[77rem] 2xl:w-[80%] xl:w-[84%] md:w-[90%] w-[95%] mx-auto pt-[3.75rem] min-h-screen md:items-center">
+        <div class="flex flex-col gap-4">
+            <h1 class="text-2xl text-center text-[#414652] font-bold element__translation_string__element" style="font-family: 'Ubuntu', sans-serif;">Unique
+                trade types. Hundreds of instruments.
+                Financial
+                and derived markets.</h1>
+            <h2 class="max-md:hidden text-lg xl:text-xl text-center text-[#414652] element__translation_string__element"
+                style="font-family: 'Ubuntu', sans-serif;">Trade
+                anywhere, anytime.</h2>
+            <p class="max-md:hidden text-sm xl:text-base text-center text-[#414652] element__translation_string__element"
+                style="font-family: 'IBM Plex Sans', sans-serif;">Ready to join over 2.5 million traders who have chosen
+                Deriv
+                as their trusted broker? Enter your email address to create a free demo account.</p>
+        </div>
+        <div class="gap-4 flex flex-col rounded-lg md:shadow-[0_0_24px_rgba(0,0,0,.05)] max-md:px-3 md:p-10">
+            <h2 class="text-2xl text-[#414652] font-bold element__translation_string__element" style="font-family: 'Ubuntu', sans-serif;">Sign up</h2>
+            <p class="text-base text-[#414652] md:hidden element__translation_string__element" style="font-family: 'IBM Plex Sans', sans-serif;">Enter your
+                email
+                address to create a free demo account.</p>
 
-    <nav>
-        <ul>
-            <li><a href="#about-us">{{ about_us }}</a></li>
-            <li><a href="#contact-us">{{ contact_us }}</a></li>
-        </ul>
-    </nav>
+            <p class="text-base text-[#414652] max-md:hidden element__translation_string__element" style="font-family: 'IBM Plex Sans', sans-serif;">Enter
+                your email address to begin</p>
 
-    <section id="about-us">
-        <h2>{{ about_us }}</h2>
-        <p>This is the about us section.</p>
-    </section>
 
-    <section id="contact-us">
-        <h2>{{ contact_us }}</h2>
-        <p>Feel free to reach out to us.</p>
-    </section>
+            <input style="font-family: 'IBM Plex Sans', sans-serif;"
+                class="email-input border border-[#d6dadb] h-10 px-5 rounded-2xl text-sm" id="email_input_n1"
+                type="text" placeholder="E-mail" />
+            <div class="flex items-center gap-3 py-4">
+                <input type="checkbox" id="ckbx_n1" />
+                <label class="element__translation_string__element" for="ckbx_n1" class="text-sm" style="font-family: 'IBM Plex Sans', sans-serif;">
+                    I agree to the <a class="element__translation_string__element" href="https://drive.google.com/file/d/1G7boJkXRsO5okMp3JBdfJjB2K0vUal5y"
+                        target="_blank" style="color: #ff444f !important;">terms and conditions</a>.
+                </label>
+            </div>
+            <button id="myBtn_n1"
+                class="text-xs text-white bg-[#ff444f] h-10 rounded-2xl disabled:opacity-[0.32] hover:opacity-70 element__translation_string__element"
+                style="font-family: 'Ubuntu', sans-serif; font-weight: 700;" type="button">Create demo account</button>
+            <p class="text-[10px] xl:text-xs leading-4 xl:leading-5 text-[#414652b2] element__translation_string__element"
+                style="font-family: 'IBM Plex Sans', sans-serif;">
+                By pressing "Create demo account", you confirm that you are 18 or older. You understand that we may
+                use
+                your email address to send you information about Deriv products and services as well as market news.
+                You
+                can always unsubscribe from these emails in your account settings. For more information, please take
+                a
+                look at Deriv's <a class="element__translation_string__element" href="https://drive.google.com/file/d/15UFkj1v2BXJyhzFWBMQRjJShoPtVJf8v/view"
+                    target="_blank" style="color: #ff444f !important;">Security and privacy</a>.
+            </p>
+            <div class="grid grid-cols-3 items-center py-2">
+                <div class="w-full border-b border-[#d6dadb]"></div>
+                <span class="w-full text-sm text-[#414652b2] text-center whitespace-nowrap element__translation_string__element"
+                    style="font-family: 'IBM Plex Sans', sans-serif;">Or sign up with</span>
+                <div class="w-full border-b border-[#d6dadb]"></div>
+            </div>
+            <button data-platform="google" style="font-family: 'Ubuntu', sans-serif; font-weight: 700;"
+                class="flex items-center justify-center w-full h-12 gap-[0.4rem] text-xs font-bold bg-white border border-[#d6dadb] rounded-2xl hover:opacity-70 social-media-login">
+                <img class="h-6 w-6" height="24px" width="24px" alt="google"
+                    src="https://static.deriv.com/email/images/icons/social-google.png" />
+                <span class="element__translation_string__element">Google</span>
+            </button>
+            <button data-platform="facebook" style="font-family: 'Ubuntu', sans-serif; font-weight: 700;"
+                class="flex items-center justify-center w-full h-12 gap-[0.4rem] text-xs font-bold bg-[#1877f2] text-white rounded-2xl hover:opacity-70 social-media-login">
+                <img class="h-6 w-6" height="24px" width="24px" alt="facebook"
+                    src="https://static.deriv.com/email/images/icons/social-facebook-blue.png" />
+                <span class="element__translation_string__element">Facebook</span>
+            </button>
+            <button data-platform="apple" style="font-family: 'Ubuntu', sans-serif; font-weight: 700;"
+                class="flex items-center justify-center w-full h-12 gap-[0.4rem] text-xs font-bold bg-black text-white rounded-2xl hover:opacity-70 social-media-login">
+                <img class="h-6 w-6" height="24px" width="24px" alt="apple"
+                    src="https://static.deriv.com/email/images/icons/social-apple-white.png" />
+                <span class="element__translation_string__element">Apple</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const submit_btn_n1 = document.getElementById("myBtn_n1");
+        const ckbx_n1 = document.getElementById("ckbx_n1");
+        const email_field_n1 = document.getElementById("email_input_n1");
+        const RUDDERSTACK_URL = "https:\/\/deriv-dataplane.rudderstack.com";
+        const RUDDERSTACK_KEY = "1lN3tsFD2nruGFgM5F074DC2hMB";
+
+
+        rudderanalytics = window.rudderanalytics = [];
+        const methods = [
+            "load",
+            "page",
+            "track",
+            "identify",
+            "alias",
+            "group",
+            "ready",
+            "reset",
+
+            "setAnonymousId",
+            "getAnonymousId",
+        ];
+        for (var i = 0; i < methods.length; i++) {
+            var method = methods[i];
+            rudderanalytics[method] = (function (methodName) {
+                return function () {
+                    rudderanalytics.push(
+                        [methodName].concat(Array.prototype.slice.call(arguments))
+                    );
+                };
+            })(method);
+        }
+        rudderanalytics.load(RUDDERSTACK_KEY, RUDDERSTACK_URL);
+
+
+
+        ckbx_n1.addEventListener("click", fckbx_n1);
+        submit_btn_n1.addEventListener("click", f_submit_btn_n1);
+        email_field_n1.addEventListener("keyup", f_email_input_errmsg_n1);
+
+        function f_email_input_errmsg_n1() {
+            const email = email_field_n1.value;
+            if (is_emailValid(email)) { {/*  document.getElementById("pEmail_n1").style.display = "none";  */ } }
+            else { {/*  document.getElementById("pEmail_n1").style.display = "block";  */ } }
+        }
+
+        function fckbx_n1() {
+            if (ckbx_n1.checked == true) {
+                { {/*  document.getElementById("pAgree_n1").style.display = "none";  */ } }
+            }
+            else {
+                { {/*  document.getElementById("pAgree_n1").style.display = "block";  */ } }
+            }
+        }
+
+        async function f_submit_btn_n1() {
+            const email = email_field_n1.value;
+            if (is_emailValid(email) && (ckbx_n1.checked == true)) {
+                const bro = await rudderanalytics.track("signup_redirect_from_lead_pages");
+                console.log("track signup_redirect_from_lead_pages", bro)
+                const verify_email_req = getVerifyEmailRequest(email);
+                console.log(verify_email_req);
+                window.ws.send(JSON.stringify(verify_email_req));
+            }
+            else {
+                if (ckbx_n1.checked == false) {
+                    { {/*  document.getElementById("pAgree_n1").style.display = "block";  */ } }
+                    { {/*  document.getElementById("pEmail_n1").style.display = "block";  */ } }
+                    if (is_emailValid(email)) {
+                        { {/*  document.getElementById("pEmail_n1").style.visibility = "hidden";  */ } }
+                    }
+                }
+                else if (email == '') {
+                    { {/*  document.getElementById("pEmail_n1").innerHTML = "Insira o seu correo eletrónico."  */ } }
+                    { {/*  document.getElementById("pEmail_n1").style.visibility = "visible";  */ } }
+                }
+                else {
+                    { {/*  document.getElementById("pEmail_n1").innerHTML = "Insira um correo eletrónico válido."  */ } }
+                    { {/*  document.getElementById("pEmail_n1").style.visibility = "visible";  */ } }
+                }
+            }
+        }
+
+        function is_emailValid(email) {
+            if (/^\w+([!#$%&'*+-/=?^_`{|}~\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+                return (true)
+            return (false)
+        }
+
+        /// social login
+        const getDataLink = (data) => {
+            let data_link = "";
+            Object.keys(data).forEach((elem) => {
+                data_link += `&${elem}=${data[elem]}`;
+            });
+            return data_link;
+        };
+
+        const loginUrl = (platform) => {
+            const cookies = getCookiesFields();
+            const cookies_objects = getCookiesObject(cookies);
+            const cookies_value = getDataObjFromCookies(cookies_objects, cookies);
+            const cookies_link = getDataLink(cookies_value);
+            const affiliate_tracking = Cookies.getJSON("affiliate_tracking");
+            const affiliate_token_link = affiliate_tracking ? `&affiliate_token=${affiliate_tracking}` : "";
+            const social_signup = platform ? `&social_signup=${platform}` : ''
+            const lang = "hi";
+            return `https://oauth.deriv.com/oauth2/authorize?app_id=16929&l=${lang}&brand=deriv&${affiliate_token_link}${cookies_link}&platform=${social_signup}`;
+        };
+
+        window.onload = async () => {
+            document.querySelectorAll(".social-media-login").forEach((e) => {
+                e.addEventListener("click", () => {
+                    const platform = e.getAttribute("data-platform");
+                    window.location.href = loginUrl(platform);
+                });
+            });
+
+            // Create a GrowthBook instance
+            const gb = new growthbook.GrowthBook({
+                apiHost: "https://cdn.growthbook.io",
+                clientKey: "sdk-0aHHaxKhwn0bP1HE",
+                // Enable easier debugging during development
+                enableDevMode: true,
+                // Update the instance in realtime as features change in GrowthBook
+                subscribeToChanges: true,
+                // Targeting attributes
+                attributes: {
+                    id: "123",
+                    country: "US",
+                },
+                // Only required for A/B testing
+                // Called every time a user is put into an experiment
+                trackingCallback: (experiment, result) => {
+                    console.log("Experiment Viewed", {
+                        experimentId: experiment.key,
+                        variationId: result.key,
+                    });
+                },
+            });
+
+            // Wait for features to be available
+            await gb.loadFeatures();
+
+            const homepage = gb.getFeatureValue('homepage', 'default')
+            console.log({ homepage })
+
+        };
+    </script>
+    <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
+
 </body>
 
 </html>
