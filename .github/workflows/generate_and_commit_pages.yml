@@ -38,8 +38,8 @@ jobs:
 
           echo "Running the generate pages script (generate-translations.js)"
 
-          cd $(git rev-parse --show-toplevel)/scripts
-          node generate-translations.js
+          cd $(git rev-parse --show-toplevel)
+          node ./scripts/generate-translations.js
 
           cd $(git rev-parse --show-toplevel)
 
