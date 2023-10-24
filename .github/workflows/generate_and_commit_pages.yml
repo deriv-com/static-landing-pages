@@ -45,8 +45,6 @@ jobs:
           cd $(git rev-parse --show-toplevel)
           npm run generate-translations
 
-          cd $(git rev-parse --show-toplevel)
-
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
@@ -58,10 +56,11 @@ jobs:
             git add .
             git commit -m "Update pages ${current_date}"
             git push
-
-            sudo apt install gh
-            gh auth login --with-token < ${{ github.token }}
-            gh pr close "$branch_name" || true
-            gh pr create --fill --base "main"
           fi
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5.0.2
+        with:
+          branch: translations/l10n_crowdin
+      
 
