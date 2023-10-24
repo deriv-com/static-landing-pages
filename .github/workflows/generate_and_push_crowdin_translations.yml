@@ -47,11 +47,7 @@ jobs:
           upload_translations: true
           download_translations: true
           localization_branch_name: translations/l10n_crowdin
-
-          create_pull_request: true
-          pull_request_title: "translations: 📚 sync translations with crowdin"
-          pull_request_body: "translations: 📚 sync translations with crowdin"
-          pull_request_base_branch_name: "main"
+          create_pull_request: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
