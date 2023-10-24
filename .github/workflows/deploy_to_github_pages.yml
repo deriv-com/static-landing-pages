@@ -2,11 +2,11 @@
 name: Deploy static content to Pages
 
 on:
-  workflow_run:
-    workflows: ["Generate Pages"]
-    types:
-      - completed
-
+  push: # Run workflow on push to main branch
+    branches:
+      - main
+    paths:
+      - "pages/**"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository
-          path: './pages'
+          path: "./pages"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
