@@ -63,5 +63,6 @@ jobs:
         with:
           branch: translations/l10n_crowdin
           base: main
+          delete-branch: true
       
 
