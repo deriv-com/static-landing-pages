@@ -38,7 +38,7 @@ jobs:
           npm install
           current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
-          git checkout -b $branch_name
+          git checkout $branch_name
 
           git pull origin main
 
