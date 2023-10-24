@@ -35,12 +35,12 @@ jobs:
         run: |
           branch_name="translations/l10n_crowdin"
 
+          git pull origin main
+
           npm install
           current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
           git checkout $branch_name
-
-          git pull origin main
 
           echo "Running the generate pages script"
 
