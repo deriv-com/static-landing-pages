@@ -5,13 +5,15 @@
   "main": "generate-translations.js",
   "scripts": {
     "extract-translations": "node ./scripts/extract-translations",
-    "generate-translations": "node ./scripts/generate-translations"
+    "generate-translations": "node ./scripts/generate-translations && npm run format-pages",
+    "format-pages": "prettier --write ./pages/**/*.html --config prettier.config.json"
   },
   "author": "Amir Ali",
   "license": "ISC",
   "dependencies": {
     "commander": "^11.0.0",
     "crc-32": "^1.2.2",
-    "jsdom": "^22.1.0"
+    "jsdom": "^22.1.0",
+    "prettier": "^3.0.3"
   }
 }
