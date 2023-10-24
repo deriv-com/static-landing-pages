@@ -8,7 +8,7 @@ fs.rmdirSync(
     recursive: true,
   },
   () => {
-    console.log("Removed templates directory");
+    console.log("Pages directory removed");
   }
 );
 
@@ -26,16 +26,35 @@ templatesDir.forEach((page) => {
 
   const favicon = pageConfig.favicon;
 
+  const thirdparty_scripts = pageConfig.thirdparty_scripts;
+
   const translations = pageConfig.translations;
 
   for (const language of translations) {
     const translationJson = require(`../translations/${language}.json`);
 
+    let page_scripts = [];
+
+    const scriptsDir = fs.readdirSync(
+      path.resolve(__dirname, `../templates/${page}/scripts`)
+    );
+
+    scriptsDir.map((script) => {
+      const script_content = fs.readFileSync(
+        path.resolve(__dirname, `../templates/${page}/scripts/${script}`),
+        "utf-8"
+      );
+
+      page_scripts.push(script_content);
+    });
+
     const renderedHTML = insertStringsToHtmlFile(
       template,
       translationJson,
       language,
-      favicon
+      favicon,
+      thirdparty_scripts,
+      page_scripts
     );
 
     const outputDir = `./pages/${page}/${language}`;

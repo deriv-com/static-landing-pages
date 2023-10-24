@@ -2,7 +2,14 @@ const crc32 = require("crc-32").str;
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-const insertStringsToHtmlFile = (input_file, translation_object, lang, favicon) => {
+const insertStringsToHtmlFile = (
+  input_file,
+  translation_object,
+  lang,
+  favicon,
+  thirdparty_scripts,
+  page_scripts
+) => {
   const dom = new JSDOM(input_file);
 
   const document = dom.window.document;
@@ -18,6 +25,22 @@ const insertStringsToHtmlFile = (input_file, translation_object, lang, favicon) 
     link.type = "image/png";
     link.href = "../assets/favicon.png";
     document.head.appendChild(link);
+  }
+
+  if (page_scripts) {
+    page_scripts.map((script) => {
+      const script_tag = document.createElement("script");
+      script_tag.innerHTML = script;
+      document.body.appendChild(script_tag);
+    });
+  }
+
+  if (thirdparty_scripts) {
+    thirdparty_scripts.map((script) => {
+      const script_tag = document.createElement("script");
+      script_tag.src = script;
+      document.body.appendChild(script_tag);
+    });
   }
 
   // set html lang attribute to the language provided
