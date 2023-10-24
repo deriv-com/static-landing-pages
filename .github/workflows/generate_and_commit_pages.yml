@@ -33,8 +33,12 @@ jobs:
 
       - name: Generate Pages
         run: |
+          branch_name="translations/l10n_crowdin"
+
           npm install
           current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          git checkout -b $branch_name
 
           git pull origin main
 
@@ -48,6 +52,18 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-          git add .
-          git commit -m "Update pages ${current_date}"
-          git push
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Found no new translation files or pages that need to be merged with main. Not creating a PR."
+          else
+            echo "Found updated translation or page file(s) that need to be merged with main. Creating a PR."
+
+            git add .
+            git commit -m "Update pages ${current_date}"
+            git push
+
+            sudo apt install gh
+            gh auth login --with-token <<< ${{ github.token }}
+            gh pr close "$branch_name" || true
+            gh pr create --fill --base "main" --head "amir-deriv:$branch_name"
+          fi
+
