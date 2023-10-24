@@ -35,6 +35,7 @@ jobs:
         run: |
           branch_name="translations/l10n_crowdin"
 
+          git config pull.rebase false
           git pull origin main
 
           npm install
