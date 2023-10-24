@@ -2,6 +2,18 @@ const path = require("path");
 const fs = require("fs");
 const { insertStringsToHtmlFile } = require("./insert-string");
 
+fs.rmdirSync(
+  "./pages",
+  {
+    recursive: true,
+  },
+  () => {
+    console.log("Removed templates directory");
+  }
+);
+
+fs.mkdirSync("./pages");
+
 const templatesDir = fs.readdirSync(path.resolve(__dirname, "../templates"));
 
 templatesDir.forEach((page) => {
@@ -12,6 +24,8 @@ templatesDir.forEach((page) => {
 
   const pageConfig = require(`../templates/${page}/page.config.js`);
 
+  const favicon = pageConfig.favicon;
+
   const translations = pageConfig.translations;
 
   for (const language of translations) {
@@ -20,7 +34,8 @@ templatesDir.forEach((page) => {
     const renderedHTML = insertStringsToHtmlFile(
       template,
       translationJson,
-      language
+      language,
+      favicon
     );
 
     const outputDir = `./pages/${page}/${language}`;
@@ -30,6 +45,16 @@ templatesDir.forEach((page) => {
     const outputFile = `${outputDir}/index.html`;
 
     fs.writeFileSync(outputFile, renderedHTML, "utf-8");
+
     console.log(`Generated ${language} HTML file: ${outputFile}`);
+  }
+
+  if (favicon) {
+    fs.mkdirSync(`./pages/${page}/assets`, { recursive: true });
+    // copy favicon to pages directory inside asset folder
+    fs.copyFileSync(
+      path.resolve(__dirname, `../templates/${page}/assets/favicon.png`),
+      path.resolve(__dirname, `../pages/${page}/assets/favicon.png`)
+    );
   }
 });
