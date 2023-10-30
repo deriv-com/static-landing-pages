@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <title>Deriv | Signup</title>
+    <title>Deriv | Signup for free</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,9 +19,17 @@
   </head>
 
   <body>
+    <div class="flex w-screen justify-center items-center">
+      <img
+        class="h-14"
+        src="https://lh3.googleusercontent.com/ybqdtCnk3Yk5fJJ4Dyy7LpbjqEcLESzxdt6DtvoCB1XZbj4XQx7C_EYO46lb6qEy1M_BpgIng3pfHvpVGiG-vg23dh6cBJj1lg=w3456"
+        alt="deriv-logo"
+      />
+    </div>
+
     <div
       id="signup-form-container"
-      class="grid md:grid-cols-2 max-md:grid-rows-[auto_1fr] gap-8 max-w-[77rem] 2xl:w-[80%] xl:w-[84%] md:w-[90%] w-[95%] mx-auto pt-[3.75rem] min-h-screen md:items-center"
+      class="grid md:grid-cols-2 max-md:grid-rows-[auto_1fr] gap-8 max-w-[77rem] 2xl:w-[80%] xl:w-[84%] md:w-[90%] w-[95%] mx-auto pt-32 md:items-center"
     >
       <div class="flex flex-col gap-4">
         <h1 class="text-2xl text-center text-[#414652] font-bold">
@@ -127,8 +135,16 @@
         </button>
       </div>
     </div>
+    <footer class="mt-12">
+      <h1 id="ls-test-feature-flag" class="text-2xl text-center text-[#414652]">This is Default</h1>
+    </footer>
 
     <script>
+      const templates = {
+        lsTestFeatureOn: `The Feature is on`,
+        lsTestFeatureOff: `This is Default`,
+      };
+
       const submit_btn_n1 = document.getElementById("myBtn_n1");
       const ckbx_n1 = document.getElementById("ckbx_n1");
       const email_field_n1 = document.getElementById("email_input_n1");
@@ -166,31 +182,75 @@
       function f_email_input_errmsg_n1() {
         const email = email_field_n1.value;
         if (is_emailValid(email)) {
-          {
-            /*  document.getElementById("pEmail_n1").style.display = "none";  */
-          }
-        } else {
-          {
-            /*  document.getElementById("pEmail_n1").style.display = "block";  */
-          }
         }
       }
 
       function fckbx_n1() {
         if (ckbx_n1.checked == true) {
-          {
-            {
-              /*  document.getElementById("pAgree_n1").style.display = "none";  */
-            }
-          }
-        } else {
-          {
-            {
-              /*  document.getElementById("pAgree_n1").style.display = "block";  */
-            }
-          }
         }
       }
+
+      const getVerifyEmailRequest = (formatted_email) => {
+        const fields = [
+          "date_first_contact",
+          "signup_device",
+          "gclid",
+          "utm_source",
+          "utm_ad_id",
+          "utm_adgroup_id",
+          "utm_adrollclk_id",
+          "utm_campaign",
+          "utm_campaign_id",
+          "utm_content",
+          "utm_fbcl_id",
+          "utm_gl_client_id",
+          "utm_medium",
+          "utm_msclk_id",
+          "utm_term",
+        ];
+
+        let url_parameters = {};
+
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        fields.map((fld) => {
+          const fld_value = urlParams.get(fld);
+
+          if (fld_value) {
+            url_parameters[fld] = fld_value;
+          }
+        });
+
+        return {
+          verify_email: formatted_email,
+          type: "account_opening",
+          url_parameters,
+        };
+      };
+
+      const initializeWebSocket = () => {
+        window.ws = new WebSocket("wss://blue.derivws.com/websockets/v3?app_id=16929&l=en&brand=deriv");
+
+        window.ws.onmessage = (message) => {
+          const response = JSON.parse(message.data);
+
+          if (response.msg_type === "error") {
+            window.ws.close();
+          }
+
+          if (response.msg_type === "verify_email") {
+            const lang = document.querySelector("html").getAttribute("lang");
+            const email = response.echo_req.verify_email;
+
+            const newUrl = `${window.location.origin}/verify-email/${lang}`;
+            const searchParams = new URLSearchParams({ email });
+            window.location.assign(`${newUrl}?${searchParams}`);
+          }
+        };
+
+        window.ws.onclose = () => setTimeout(() => initializeWebSocket(), 1000);
+      };
 
       async function f_submit_btn_n1() {
         const email = email_field_n1.value;
@@ -200,48 +260,6 @@
           const verify_email_req = getVerifyEmailRequest(email);
           console.log(verify_email_req);
           window.ws.send(JSON.stringify(verify_email_req));
-        } else {
-          if (ckbx_n1.checked == false) {
-            {
-              {
-                /*  document.getElementById("pAgree_n1").style.display = "block";  */
-              }
-            }
-            {
-              {
-                /*  document.getElementById("pEmail_n1").style.display = "block";  */
-              }
-            }
-            if (is_emailValid(email)) {
-              {
-                {
-                  /*  document.getElementById("pEmail_n1").style.visibility = "hidden";  */
-                }
-              }
-            }
-          } else if (email == "") {
-            {
-              {
-                /*  document.getElementById("pEmail_n1").innerHTML = "Insira o seu correo eletrónico."  */
-              }
-            }
-            {
-              {
-                /*  document.getElementById("pEmail_n1").style.visibility = "visible";  */
-              }
-            }
-          } else {
-            {
-              {
-                /*  document.getElementById("pEmail_n1").innerHTML = "Insira um correo eletrónico válido."  */
-              }
-            }
-            {
-              {
-                /*  document.getElementById("pEmail_n1").style.visibility = "visible";  */
-              }
-            }
-          }
         }
       }
 
@@ -260,15 +278,9 @@
       };
 
       const loginUrl = (platform) => {
-        const cookies = getCookiesFields();
-        const cookies_objects = getCookiesObject(cookies);
-        const cookies_value = getDataObjFromCookies(cookies_objects, cookies);
-        const cookies_link = getDataLink(cookies_value);
-        const affiliate_tracking = Cookies.getJSON("affiliate_tracking");
-        const affiliate_token_link = affiliate_tracking ? `&affiliate_token=${affiliate_tracking}` : "";
         const social_signup = platform ? `&social_signup=${platform}` : "";
         const lang = "hi";
-        return `https://oauth.deriv.com/oauth2/authorize?app_id=16929&l=${lang}&brand=deriv&${affiliate_token_link}${cookies_link}&platform=${social_signup}`;
+        return `https://oauth.deriv.com/oauth2/authorize?app_id=16929&l=${lang}&brand=deriv&platform=${social_signup}`;
       };
 
       window.onload = async () => {
@@ -282,18 +294,13 @@
         // Create a GrowthBook instance
         const gb = new growthbook.GrowthBook({
           apiHost: "https://cdn.growthbook.io",
-          clientKey: "sdk-0aHHaxKhwn0bP1HE",
-          // Enable easier debugging during development
+          clientKey: "sdk-jJ33wcv3oAB2xvxM",
           enableDevMode: true,
-          // Update the instance in realtime as features change in GrowthBook
           subscribeToChanges: true,
-          // Targeting attributes
           attributes: {
             id: "123",
             country: "US",
           },
-          // Only required for A/B testing
-          // Called every time a user is put into an experiment
           trackingCallback: (experiment, result) => {
             console.log("Experiment Viewed", {
               experimentId: experiment.key,
@@ -302,12 +309,23 @@
           },
         });
 
-        // Wait for features to be available
         await gb.loadFeatures();
 
-        const homepage = gb.getFeatureValue("homepage", "default");
-        console.log({ homepage });
+        const lsTestFeature = gb.getFeatureValue("ls-test-feature", {
+          key: "no-value",
+        });
+        console.log(lsTestFeature.key);
+
+        const heading = document.getElementById("ls-test-feature-flag");
+
+        if (lsTestFeature.key === "no-value") {
+          heading.innerHTML = templates.lsTestFeatureOff;
+        } else {
+          heading.innerHTML = templates.lsTestFeatureOn;
+        }
       };
+
+      initializeWebSocket();
     </script>
     <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
