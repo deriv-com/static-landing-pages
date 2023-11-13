@@ -1,6 +1,8 @@
 const path = require("path");
 const fs = require("fs");
 const { insertStringsToHtmlFile } = require("./utils");
+const UglifyJS = require("uglify-js");
+
 
 require("dotenv").config();
 
@@ -61,7 +63,7 @@ templatesDir.forEach((page) => {
         );
       });
 
-      page_scripts.push(script_content);
+      page_scripts.push(UglifyJS.minify(script_content).code);
     });
 
     const renderedHTML = insertStringsToHtmlFile(
