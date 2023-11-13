@@ -8,10 +8,8 @@ permissions:
   statuses: write
 
 on:
-  workflow_run:
-    workflows: ["Sync Translations"]
-    types:
-      - completed
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -43,21 +41,15 @@ jobs:
           echo "Running the generate pages script"
 
           cd $(git rev-parse --show-toplevel)
-          npm run generate-translations
-
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "Found no new translation files or pages that need to be merged with main. Not creating a PR."
-          else
-            echo "Found updated translation or page file(s) that need to be merged with main. Creating a PR."
-
-            git add .
-            git commit -m "Update pages ${current_date}"
-            git push
-
-            gh pr create --base main --head $branch_name
-          fi
+          npm run generate-pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload entire repository
+          path: "./pages"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
       
-

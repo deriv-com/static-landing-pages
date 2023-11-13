@@ -5,8 +5,7 @@ const path = require("path");
 const program = require("commander");
 const crc32 = require("crc-32").str;
 const fs = require("fs");
-const getStringsFromHtmlFiles =
-  require("./extract-string").getStringsFromHtmlFiles;
+const { getStringsFromHtmlFiles } = require("./utils");
 
 program
   .version("0.1.0")

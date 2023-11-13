@@ -2,10 +2,10 @@
   "name": "translations-static",
   "version": "1.0.0",
   "description": "",
-  "main": "generate-translations.js",
+  "main": "scripts/generate-pages.js",
   "scripts": {
     "extract-translations": "node ./scripts/extract-translations",
-    "generate-translations": "node ./scripts/generate-translations && npm run format-pages",
+    "generate-pages": "node ./scripts/generate-pages && npm run format-pages",
     "format-pages": "prettier --write ./pages/**/*.html --config prettier.config.json"
   },
   "author": "Amir Ali",
@@ -13,7 +13,13 @@
   "dependencies": {
     "commander": "^11.0.0",
     "crc-32": "^1.2.2",
+    "dotenv": "^16.3.1",
     "jsdom": "^22.1.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "uglify-js": "^3.17.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.3"
   }
 }

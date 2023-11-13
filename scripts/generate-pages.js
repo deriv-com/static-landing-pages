@@ -1,16 +1,24 @@
 const path = require("path");
 const fs = require("fs");
-const { insertStringsToHtmlFile } = require("./insert-string");
+const { insertStringsToHtmlFile } = require("./utils");
 
-fs.rmdirSync(
-  "./pages",
-  {
-    recursive: true,
-  },
-  () => {
-    console.log("Pages directory removed");
-  }
-);
+require("dotenv").config();
+
+try {
+  fs.rmdirSync(
+    "./pages",
+    {
+      recursive: true,
+    },
+    () => {
+      console.log("Pages directory removed");
+    }
+  );
+} catch (err) {
+  console.log("-------------------------");
+  console.log('Creating pages directory');
+  console.log("-------------------------");
+}
 
 fs.mkdirSync("./pages");
 
@@ -40,10 +48,18 @@ templatesDir.forEach((page) => {
     );
 
     scriptsDir.map((script) => {
-      const script_content = fs.readFileSync(
+      let script_content = fs.readFileSync(
         path.resolve(__dirname, `../templates/${page}/scripts/${script}`),
         "utf-8"
       );
+
+      // replace process.env variables with actual values in script_content
+      Object.keys(process.env).forEach((key) => {
+        script_content = script_content.replace(
+          new RegExp(`process.env.${key}`, "g"),
+          `"${process.env[key]}"`
+        );
+      });
 
       page_scripts.push(script_content);
     });
