@@ -27,13 +27,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_PAT }}
-          ref: 'translations/l10n_crowdin'
+          ref: 'main'
 
       - name: Generate Pages
         run: |
-          branch_name="translations/l10n_crowdin"
-
-          git checkout $branch_name
+          git checkout main
 
           npm install
           current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
