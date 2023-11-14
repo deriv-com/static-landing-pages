@@ -1,0 +1,54 @@
+name: Generate pages
+
+permissions:
+  actions: write
+  checks: write
+  contents: write
+  statuses: write
+  pages: write
+  id-token: write
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: 'main'
+      - name: Generate Pages
+        run: |
+          git checkout main
+          npm install
+
+          echo "============================================="
+          echo "* Running the generate pages script now ... *"
+          echo "============================================="
+
+          cd $(git rev-parse --show-toplevel)
+          npm run generate-pages
+        env:
+          RUDDERSTACK_KEY: ${{ vars.RUDDERSTACK_KEY }}
+          RUDDERSTACK_URL: ${{ vars.RUDDERSTACK_URL }}
+          GROWTHBOOK_API_HOST: ${{ vars.GROWTHBOOK_API_HOST }}
+          GROWTHBOOK_CLIENT_KEY: ${{ vars.GROWTHBOOK_CLIENT_KEY }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload entire repository
+          path: "./pages"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

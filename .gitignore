@@ -1,3 +1,8 @@
+.vscode/
+.idea/
+
+pages/
+
 # Logs
 logs
 *.log
