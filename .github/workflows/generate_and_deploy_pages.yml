@@ -29,14 +29,6 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
           ref: 'main'
-
-      - name: create env file
-        run: |
-          touch .env
-          echo RUDDERSTACK_KEY=${{ secrets.RUDDERSTACK_KEY }} >> .env
-          echo RUDDERSTACK_URL=${{ secrets.RUDDERSTACK_URL }} >> .env
-          echo GROWTHBOOK_API_HOST=${{ secrets.GROWTHBOOK_API_HOST }} >> .env
-          echo GROWTHBOOK_CLIENT_KEY=${{ secrets.GROWTHBOOK_CLIENT_KEY }} >> .env
       - name: Generate Pages
         run: |
           git checkout main
@@ -48,6 +40,11 @@ jobs:
 
           cd $(git rev-parse --show-toplevel)
           npm run generate-pages
+        env:
+          RUDDERSTACK_KEY: ${{ vars.RUDDERSTACK_KEY }}
+          RUDDERSTACK_URL: ${{ vars.RUDDERSTACK_URL }}
+          GROWTHBOOK_API_HOST: ${{ vars.GROWTHBOOK_API_HOST }}
+          GROWTHBOOK_CLIENT_KEY: ${{ vars.GROWTHBOOK_CLIENT_KEY }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
