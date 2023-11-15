@@ -31,9 +31,9 @@ jobs:
           git checkout main
           npm install
 
-          echo "============================================="
+          echo "\n\n============================================="
           echo "* Running the generate pages script now ... *"
-          echo "============================================="
+          echo "=============================================\n\n"
 
           cd $(git rev-parse --show-toplevel)
           npm run generate-pages
@@ -42,13 +42,8 @@ jobs:
           RUDDERSTACK_URL: ${{ vars.RUDDERSTACK_URL }}
           GROWTHBOOK_API_HOST: ${{ vars.GROWTHBOOK_API_HOST }}
           GROWTHBOOK_CLIENT_KEY: ${{ vars.GROWTHBOOK_CLIENT_KEY }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+      - name: Publish to Cloudflare Pages Production
+        uses: "./.github/actions/publish_pages_to_production"
         with:
-          # Upload entire repository
-          path: "./pages"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
