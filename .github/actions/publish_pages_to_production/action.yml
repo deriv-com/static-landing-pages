@@ -17,7 +17,9 @@ runs:
       CLOUDFLARE_API_TOKEN: ${{ inputs.CLOUDFLARE_API_TOKEN }}
     run: |
       npm i wrangler@3.1.0
-      cd packages/core
+
+      cd $(git rev-parse --show-toplevel)
+
       npx wrangler pages deploy pages/ --project-name=deriv-static-landing-pages --branch=main
       echo "New website - http://lp.deriv.com"
     shell: bash
