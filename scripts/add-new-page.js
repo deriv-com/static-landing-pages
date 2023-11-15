@@ -90,8 +90,8 @@ fs.writeFileSync(
         <meta name="description" content="${pageDescription}" />
     </head>
     <body>
-        <h1 class="element__translation_string__element">${pageTitle}</h1>
-        <p class="element__translation_string__element">${pageDescription}</p>
+        <h1 class="el__t_string__el">${pageTitle}</h1>
+        <p class="el__t_string__el">${pageDescription}</p>
     </body>
 </html>`,
   "utf8",

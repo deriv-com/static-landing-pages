@@ -42,10 +42,10 @@ The folder should contain the following files:
 
 #### Translations
 
-Inside the html file of the template for every element which has some text that needs to be translated, we need to add a class `element__translation_string__element` to the element. For example:
+Inside the html file of the template for every element which has some text that needs to be translated, we need to add a class `el__t_string__el` to the element. For example:
 
 ```html
-<p class="element__translation_string__element">This is some text</p>
+<p class="el__t_string__el">This is some text</p>
 ```
 
 ### Page configuration
