@@ -1,5 +1,9 @@
 # Deriv Static Landing Pages
 
+The goal of this project is to have a simplest solution for creating static landing pages and have user tracking, translations and A/B testing capabilities up and running in no time.
+
+This also ease the process of creating new landing pages and make it more accessible to non-technical people, they can easily edit the content of page or create new pages by just adding a new folder in the `templates` folder and adding the required files.
+
 ## Get Started
 
 ### Install Dependencies
