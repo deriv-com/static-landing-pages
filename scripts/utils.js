@@ -10,7 +10,7 @@ const getStringsFromHtmlFiles = (input_file) => {
 
   const messages = [];
   const el_translations = document.getElementsByClassName(
-    "element__translation_string__element"
+    "el__t_string__el"
   );
 
   Array.from(el_translations).forEach((el_translation) => {
@@ -37,7 +37,7 @@ const insertStringsToHtmlFile = (
   const document = dom.window.document;
 
   const el_translations = document.getElementsByClassName(
-    "element__translation_string__element"
+    "el__t_string__el"
   );
 
   // if favicon is true, add a link tag with favicon href
@@ -81,7 +81,7 @@ const insertStringsToHtmlFile = (
       }
     }
 
-    el_translation.classList.remove("element__translation_string__element");
+    el_translation.classList.remove("el__t_string__el");
 
     // remove the class attribute if the value is empty string
     if (!el_translation.getAttribute("class")) {

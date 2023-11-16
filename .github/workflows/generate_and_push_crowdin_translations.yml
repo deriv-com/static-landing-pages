@@ -36,6 +36,7 @@ jobs:
           node extract-translations.js
           new_messages_json_hash="$(git hash-object $(git rev-parse --show-toplevel)/crowdin/messages.json)"
           echo "- [generated]: message.json hash is $new_messages_json_hash"
+        shell: bash
 
       - name: Synchronize with Crowdin
         uses: crowdin/github-action@v1

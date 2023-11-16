@@ -1,5 +1,9 @@
 # Deriv Static Landing Pages
 
+The goal of this project is to have a simplest solution for creating static landing pages and have user tracking, translations and A/B testing capabilities up and running in no time.
+
+This also ease the process of creating new landing pages and make it more accessible to non-technical people, they can easily edit the content of page or create new pages by just adding a new folder in the `templates` folder and adding the required files.
+
 ## Get Started
 
 ### Install Dependencies
@@ -26,10 +30,22 @@ npm run extract-translations
 
 ### Template structure
 
-For every element which has some text that needs to be translated, we need to add a class `element__translation_string__element` to the element. For example:
+For each page we want to add in the project, we need to create a folder in `templates` folder with the name of the page. For example, if we want to create a page with the name `about`, we need to create a folder with the name `about` in the `templates` folder.
+
+The folder should contain the following files:
+
+- `index.html`: The main html file for the page
+- `page.config.js`: The configuration file for the page
+- `scripts/main.js`: The main script file for the project, we can add as many scripts as we want in this file and all of them will be included in the final bundle
+- `assets/favicon.ico`: The favicon for the page
+
+
+#### Translations
+
+Inside the html file of the template for every element which has some text that needs to be translated, we need to add a class `el__t_string__el` to the element. For example:
 
 ```html
-<p class="element__translation_string__element">This is some text</p>
+<p class="el__t_string__el">This is some text</p>
 ```
 
 ### Page configuration

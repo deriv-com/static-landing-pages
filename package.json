@@ -1,8 +1,7 @@
 {
   "name": "translations-static",
   "version": "1.0.0",
-  "description": "",
-  "main": "scripts/generate-pages.js",
+  "description": "Simple solution for creating static landing pages and have user tracking, translations and A/B testing capabilities up and running in no time.",
   "scripts": {
     "extract-translations": "node ./scripts/extract-translations",
     "generate-pages": "node ./scripts/generate-pages && npm run format-pages",
