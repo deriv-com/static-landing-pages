@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;700&family=Ubuntu:wght@400;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        #about-2 {
+            margin: 0;
+            max-width: none;
+            padding: 0;
+        }
+
+        .widget, .inner-column, .composite {
+            padding: 0 !important
+        }
+    </style>
+</head>
+
+<body>
+    <header class="w-full flex items-center justify-center h-[70px] sticky top-0 bg-white z-50">
+        <img style="height: 36px; width: 97px;" height="36px" width="97px"
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTciIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCA5NyAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzMzODhfMTk0ODkpIj4KPHBhdGggZD0iTTE5LjMyMDggMS4wMDk0MUwxNy42Njk3IDEwLjM2OTNIMTEuOTM4M0M2LjU5MTMyIDEwLjM2OTMgMS40OTQ3NyAxNC42OTk4IDAuNTUwMTU2IDIwLjA0NDdMMC4xNTAzMyAyMi4zMTk3Qy0wLjc4OTg4MiAyNy42NjQ3IDIuNzc3NjkgMzEuOTk1MiA4LjEyNDY5IDMxLjk5NTJIMTIuOTA0OUMxNi44MDIgMzEuOTk1MiAyMC41MTQ2IDI4Ljg0MTcgMjEuMiAyNC45NDYyTDI1LjYwMjMgMEwxOS4zMjA4IDEuMDA5NDFaTTE1LjI1NDEgMjQuMDYzM0MxNS4wNDMyIDI1LjI2NjcgMTMuOTU5NCAyNi4yNDYyIDEyLjc1NTUgMjYuMjQ2Mkg5Ljg1MTM3QzcuNDQ4MDggMjYuMjQ2MiA1Ljg0MDA0IDI0LjI5NjEgNi4yNjE4IDIxLjg4OTNMNi41MTIyNSAyMC40NzA3QzYuOTM4NDEgMTguMDY4MyA5LjIzMTg2IDE2LjExMzkgMTEuNjM1MiAxNi4xMTM5SDE2LjY1NjNMMTUuMjU0MSAyNC4wNjMzWk02My40NjAxIDMxLjk5NDdMNjcuMjIxIDEwLjY2NzVINzMuMTY5OEw2OS40MDg5IDMxLjk5NDdINjMuNDYwMVpNNjQuMTAzNSAxMC45MTM0QzYzLjgwNTMgMTIuNjA1IDYzLjUwNTkgMTQuMjk2NyA2My4yMDc3IDE1Ljk4ODNDNjAuMzg5NCAxNS4xMTI5IDU3LjQ4MTYgMTUuMzkxNyA1Ni41ODgzIDE1LjU2OTdDNTUuNjIzNSAyMS4wNDYxIDU0LjY1NzUgMjYuNTIzNyA1My42OTE0IDMySDQ3LjczODZDNDguNTQ2OSAyNy40MTc5IDUxLjMwODcgMTEuNzY5MiA1MS4zMDg3IDExLjc2OTJDNTMuMjQ0OCAxMC45Njc3IDU3Ljk5OTQgOS4zNDExNyA2NC4xMDM1IDEwLjkxMzRaTTM5Ljk4MzUgMTAuMzY1N0gzNS4zNTI3QzMwLjg0MDUgMTAuMzY1NyAyNi41Mzk0IDE0LjAxOTggMjUuNzQ0IDE4LjUzMDJMMjQuODA4MiAyMy44MzEzQzI0LjAxMjkgMjguMzQxOCAyNy4wMjI2IDMxLjk5NTkgMzEuNTM0OSAzMS45OTU5SDQxLjM4NTJMNDIuMzk1OCAyNi4yNjQ1SDMzLjEzODNDMzEuNjM1OCAyNi4yNjQ1IDMwLjYyOTYgMjUuMDQ3OSAzMC44OTc3IDIzLjU0MTRMMzAuOTI4NSAyMy4zNjE0SDQ1Ljg1MzVMNDYuNzA1OCAxOC41MzAyQzQ3LjUwMDkgMTQuMDE5OCA0NC40OTE0IDEwLjM2NTcgMzkuOTc5MiAxMC4zNjU3SDM5Ljk4MzVaTTQwLjczNDkgMTguMDczNUw0MC42OTk3IDE4LjM4MDlIMzEuODI0OEwzMS44NzMyIDE4LjEwODZDMzIuMTQxIDE2LjYwNjYgMzMuNTEyIDE1LjI4NDYgMzUuMDE4OCAxNS4yODQ2SDM4LjQ4NTRDMzkuOTc0OCAxNS4yODQ2IDQwLjk4MSAxNi41ODQ2IDQwLjczNDkgMTguMDczNVpNOTAuNDI3OCAxMC42Njc1SDk2LjM4MUM5NC4zNTMgMTYuMDU3MSA4OS43MDU2IDI1LjIyNTIgODUuMjAzNyAzMS45OTQ3SDc5LjI1MDVDNzcuMTg0IDI1LjU1MTggNzUuODQ5NSAxNi41NzQ3IDc1LjU5NDkgMTAuNjY3NUg4MS41NDgzQzgxLjY1NTggMTIuNTk0NCA4Mi41MTg3IDE5Ljc0MTYgODMuNTAzNSAyNC43MzQ3Qzg2LjIwNDYgMTkuODc3MiA4OS4xODI0IDEzLjUwNCA5MC40MjMyIDEwLjY2NzVIOTAuNDI3OFoiIGZpbGw9IiNGRjQ0NEYiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8zMzg4XzE5NDg5Ij4KPHJlY3Qgd2lkdGg9Ijk2LjQ0NDUiIGhlaWdodD0iMzIiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg=="
+            alt="deriv logo" />
+    </header>
+    <div
+        class="px-4 bg-[linear-gradient(0deg,rgb(204,54,63),rgb(102,27,32))] md:bg-[linear-gradient(to_left,rgb(102,27,32)_39%,rgb(204,54,63))]">
+        <div class="flex md:gap-20 max-md:flex-col-reverse items-center max-w-[1440px] mx-auto">
+            <div class="relative top-[40px] max-md:-left-[50px]">
+                <img style="max-width: 683px;" src="https://deriv.com/static/3f334bd0aa5dc7a8d7da833a049b2dbd/8dac9/forex-ebook-en.avif"
+                    alt="ebook" />
+            </div>
+            <div class="max-md:max-w-[360px] flex-1 flex flex-col gap-2 w-full text-white pt-10 md:py-4">
+                <h2 class="text-xl md:text-4xl text-white" style="font-family: 'Ubuntu', sans-serif; font-weight: 400">
+                    Your free guide on
+                </h2>
+                <h1 class="text-3xl md:text-5xl max-w-[645px] text-white"
+                    style="font-family: 'Ubuntu', sans-serif; font-weight: 600">
+                    How to trade the forex market
+                </h1>
+                <h4 class="text-base" style="font-family: 'Ubuntu', sans-serif; font-weight: 300">
+                    Claim a FREE e-book now!<br />Plus a free demo account to practice.
+                </h4>
+                <p class="text-sm max-w-[586px] text-white" style="
+              font-family: 'IBM Plex Sans', sans-serif;
+              font-weight: 300;
+              font-style: italic;
+            ">
+                    This e-book has been brought to you by a veteran online trader and
+                    New YorkTimesbestselling author,
+                    <span class="font-bold text-white">Vince Stanzione.</span>
+                </p>
+
+                <div id="get_ebook_form" class="max-w-[400px] flex flex-col gap-2 mt-6">
+                    <input style="font-family: 'IBM Plex Sans', sans-serif"
+                        class="email-input text-black border border-[#d6dadb] h-10 px-5 rounded-2xl text-sm w-full"
+                        id="email_input_n1" type="text" placeholder="E-mail" />
+                    <div class="flex items-center gap-3 py-2">
+                        <input type="checkbox" id="ckbx_n1" />
+                        <label for="ckbx_n1" class="text-sm" style="font-family: 'IBM Plex Sans', sans-serif">
+                            I agree to the
+                            <a href="https://drive.google.com/file/d/1G7boJkXRsO5okMp3JBdfJjB2K0vUal5y" target="_blank"
+                                style="color: #ff444f !important" class="hover:underline">terms and conditions</a>.
+                        </label>
+                    </div>
+                    <button disabled id="myBtn_n1"
+                        class="bg-[#ff444f] rounded h-10 text-sm font-bold w-full hover:opacity-70 disabled:opacity-30">
+                        Get your free ebook now!
+                    </button>
+                    <p class="text-xs text-[#999]">
+                        By pressing "Get your free ebook now!", you confirm that you are
+                        18 or older. You understand that we may use your email address to
+                        send you information about Deriv products and services as well as
+                        market news. You can always unsubscribe from these emails in your
+                        account settings. For more information, please take a look at
+                        Deriv's
+                        <a href="https://deriv.com/tnc/security-and-privacy.pdf" target="_blank"
+                            class="text-[#ff444f] hover:underline">Security and privacy</a>.
+                    </p>
+                    <div class="grid grid-cols-3 py-2 items-center">
+                        <div class="w-full border-b border-white"></div>
+                        <span class="w-full text-sm text-white text-center whitespace-nowrap"
+                            style="font-family: 'IBM Plex Sans', sans-serif">Or sign up with</span>
+                        <div class="w-full border-b border-white"></div>
+                    </div>
+                    <div class="flex max-sm:flex-col gap-3">
+                        <button data-platform="google"
+                            class="font-bold font-['Ubuntu',sans-serif] flex items-center justify-center w-full h-10 gap-[0.4rem] text-sm font-bold bg-white text-black border border-[#d6dadb] rounded hover:opacity-70 social-media-login">
+                            <img class="h-6 w-6" height="24px" width="24px" alt="google"
+                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZmlsbD0iIzNlODJmMSIgZD0iTTIxLjU0NiAxMi4yMDJhMTEuNzIgMTEuNzIgMCAwIDAtLjE4LTIuMDRoLTkuMzkzdjMuODU1aDUuMzY3YTQuNTc1IDQuNTc1IDAgMCAxLTEuOTg5IDMuMDA4bDMuMjIxIDIuNTA0YzEuODg4LTEuNzM2IDIuOTc1LTQuMjkgMi45NzUtNy4zMjd6Ii8+PHBhdGggZmlsbD0iIzMyYTc1MyIgZD0iTTE1LjM1IDE3LjAyNWMtLjg5LjYtMi4wMzMuOTUzLTMuMzc4Ljk1My0yLjYgMC00Ljc5Ni0xLjc1NC01LjU4LTQuMTEyTDMuMDYgMTYuNDQ4YTkuOTYzIDkuOTYzIDAgMCAwIDguOTEzIDUuNDljMi42OTUgMCA0Ljk1Mi0uODkgNi42LTIuNDE0bC0zLjIyMi0yLjQ5OXoiLz48cGF0aCBmaWxsPSIjZjliYjAwIiBkPSJNNi4zOTIgMTAuMDc4IDMuMDYgNy40OTZhMTAgMTAgMCAwIDAgMCA4Ljk1OGwzLjMzMy0yLjU4M2E1Ljk0NyA1Ljk0NyAwIDAgMSAwLTMuNzkzeiIvPjxwYXRoIGZpbGw9IiNlNzQxMzMiIGQ9Ik0xMS45NzIgMmE5Ljk4IDkuOTggMCAwIDAtOC45MTMgNS40OTZsMy4zMzMgMi41ODJjLjc4NC0yLjM1OCAyLjk4LTQuMTEyIDUuNTgtNC4xMTIgMS40NjIgMCAyLjc3OS41MDUgMy44MSAxLjQ5bDIuODYyLTIuODYyQzE2LjkyIDIuOTg2IDE0LjY2MSAyIDExLjk3MiAyeiIvPjwvc3ZnPg==" />
+                            <span>Google</span>
+                        </button>
+                        <button data-platform="facebook"
+                            class="font-bold font-['Ubuntu',sans-serif] flex items-center justify-center w-full h-10 gap-[0.4rem] text-sm font-bold bg-white text-black rounded hover:opacity-70 social-media-login">
+                            <img class="h-6 w-6" height="24px" width="24px" alt="facebook"
+                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNLjAwMS4wMDFIMjJ2MjEuODY1SC4wMDF6Ii8+PC9kZWZzPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEgMSkiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPjx1c2UgeGxpbms6aHJlZj0iI2EiLz48L21hc2s+PHBhdGggZmlsbD0iIzE4NzdmMiIgZD0iTTIxIDExLjA2MUMyMSA1LjUwNSAxNi41MjMgMSAxMSAxUzEgNS41MDUgMSAxMS4wNjFDMSAxNi4wODMgNC42NTcgMjAuMjQ1IDkuNDM4IDIxdi03LjAzaC0yLjU0di0yLjkxaDIuNTRWOC44NDVjMC0yLjUyMiAxLjQ5Mi0zLjkxNSAzLjc3Ny0zLjkxNSAxLjA5NCAwIDIuMjM4LjE5NyAyLjIzOC4xOTd2Mi40NzZoLTEuMjZjLTEuMjQzIDAtMS42My43NzUtMS42MyAxLjU3djEuODg4aDIuNzczbC0uNDQzIDIuOTA4aC0yLjMzVjIxYzQuNzgtLjc1NSA4LjQzNy00LjkxNyA4LjQzNy05LjkzOSIgbWFzaz0idXJsKCNiKSIvPjwvZz48L3N2Zz4=" />
+                            <span>Facebook</span>
+                        </button>
+                        <button data-platform="apple"
+                            class="font-bold font-['Ubuntu',sans-serif] flex items-center justify-center w-full h-10 gap-[0.4rem] text-sm font-bold bg-white text-black rounded hover:opacity-70 social-media-login">
+                            <img class="h-6 w-6" height="24px" width="24px" alt="apple"
+                                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHBhdGggZD0iTTE3LjI5NCAxMi40NzNjMC0yLjQ2IDIuMDYzLTMuNjUgMi4xNDItMy43My0xLjE5LTEuNjY1LTIuOTM1LTEuOTAzLTMuNTctMS45ODMtMS41MDgtLjE1OC0zLjAxNS44NzMtMy43My44NzMtLjc5MyAwLTEuOTgzLS44NzMtMy4yNTItLjg3My0xLjY2NiAwLTMuMTc0Ljk1Mi00LjA0NiAyLjQ2LTEuNzQ2IDMuMDE1LS40NzYgNy40NTggMS4xOSA5LjkxNy44NzMgMS4xOSAxLjgyNSAyLjUzOSAzLjA5NCAyLjQ2czEuNzQ1LS43OTQgMy4yNTMtLjc5NCAxLjkwNC43OTQgMy4yNTMuNzk0IDIuMjIxLTEuMTkgMy4wMTUtMi4zOGMuOTUyLTEuMzUgMS4zNDgtMi42OTggMS4zNDgtMi43NzctLjA3OS0uMDgtMi42OTctMS4wMzItMi42OTctMy45Njd6bS0yLjQ2LTcuMjk5QzE1LjQ3IDQuMyAxNS45NDUgMy4xOSAxNS44NjYgMmMtLjk1Mi4wOC0yLjIyMi42MzUtMi44NTYgMS41MDctLjYzNS43MTQtMS4xOSAxLjkwNS0xLjAzMiAzLjAxNSAxLjAzMi4wOCAyLjE0Mi0uNTU1IDIuODU2LTEuMzQ4eiIvPjwvc3ZnPg==" />
+                            <span>Apple</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display: none" id="email_sent_card"
+                    class="max-w-[330px] flex flex-col items-center justify-center gap-5 p-5 text-center border border-white rounded-lg">
+                    <img class="w-[200px]"
+                        src="https://deriv.com/static/view-email-0ee5a7f85d0bfc7c88aff22ea35df8dc.png" alt="envelope" />
+                    <h2 class="text-3xl font-[Ubuntu,sans-serif] text-white">Check your email</h2>
+                    <p style="word-break: break-word;" class="text-white">
+                        We've sent a message to <span id="email_sent_to"></span> with a
+                        link to activate your account.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full max-w-[1200px] mx-auto flex items-center gap-20 px-4 md:px-12 py-28" style="
+        background-image: url(https://deriv.com/static/ebook-intro-bg.e450b484.svg);
+        background-size: cover;
+      ">
+        <img class="max-sm:hidden" style="width: 142px; height: 462px;" width="142px" height="462px"
+            src="https://deriv.com/static/introduction-forex-ebook-f3ea05afb16bef801a1922db26afaa53.png"
+            alt="introduction" />
+        <div class="flex-1">
+            <h1 class="text-3xl md:text-5xl font-bold font-['Ubuntu',sans-serif] mb-5 max-md:text-center">
+                Introduction
+            </h1>
+            <p class="text-base font-['IBM_Plex_Sans',sans-serif]">
+                Foreign exchange -- forex or the FX market, as it is commonly known --
+                is one of the biggest marketplaces in the world, offering endless
+                trading opportunities. In this 75-page book, expert trader Vince
+                Stanzione will teach you how to spot and take advantage of trading
+                opportunities in the forex markets, using Deriv's DTrader and
+                MetaTrader5 platforms.
+            </p>
+            <h2 class="text-xl md:text-2xl font-bold font-['Ubuntu',sans-serif] mb-5 mt-8">
+                In this book you'll learn:
+            </h2>
+            <ul class="flex flex-col gap-5 font-['IBM_Plex_Sans',sans-serif]">
+                <li class="flex">
+                    <img class="w-4 h-6 object-contain mr-[10px]"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                        alt="Check Icon" />
+                    <p>The basics of forex trading</p>
+                </li>
+                <li class="flex">
+                    <img class="w-4 h-6 object-contain mr-[10px]"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                        alt="Check Icon" />
+                    <p>How to manage risk when trading forex</p>
+                </li>
+                <li class="flex">
+                    <img class="w-4 h-6 object-contain mr-[10px]"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                        alt="Check Icon" />
+                    <p>
+                        Check IconHow to use digital options to profit from up, down, and
+                        even sideways moves
+                    </p>
+                </li>
+                <li class="flex">
+                    <img class="w-4 h-6 object-contain mr-[10px]"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                        alt="Check Icon" />
+                    <p>
+                        Check IconHow to plan your trading activities without spending
+                        hours each day analysing the world market
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bg-[linear-gradient(rgb(234,244,245)_1%,_rgba(242,245,248,0)_99%)] w-full mb-[50px]">
+        <div class="w-full max-w-[1200px] mx-auto flex max-md:flex-col-reverse items-center px-4 md:px-[100px]">
+            <div class="w-full md:w-[40%]">
+                <h2 class="text-xl md:text-2xl mt-6 mb-5 font-bold font-['Ubuntu',sans-serif]">
+                    Topics covered
+                </h2>
+                <ul class="flex flex-col gap-5 font-['IBM_Plex_Sans',sans-serif]">
+                    <li class="flex">
+                        <img class="w-4 h-6 object-contain mr-[10px]"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                            alt="Check Icon" />
+                        <p>The basics of forex</p>
+                    </li>
+                    <li class="flex">
+                        <img class="w-4 h-6 object-contain mr-[10px]"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                            alt="Check Icon" />
+                        <p>Who uses the forex market?</p>
+                    </li>
+                    <li class="flex">
+                        <img class="w-4 h-6 object-contain mr-[10px]"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                            alt="Check Icon" />
+                        <p>Which currencies are on the forex market?</p>
+                    </li>
+                    <li class="flex">
+                        <img class="w-4 h-6 object-contain mr-[10px]"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                            alt="Check Icon" />
+                        <p>Why trade forex on Deriv?</p>
+                    </li>
+                    <li class="flex">
+                        <img class="w-4 h-6 object-contain mr-[10px]"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                            alt="Check Icon" />
+                        <p>Advantages of trading forex on DTrader</p>
+                    </li>
+                    <li class="flex">
+                        <img class="w-4 h-6 object-contain mr-[10px]"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                            alt="Check Icon" />
+                        <p>Advantages of trading forex on DMT5</p>
+                    </li>
+                    <li class="flex">
+                        <img class="w-4 h-6 object-contain mr-[10px]"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                            alt="Check Icon" />
+                        <p>Currency pairs you can trade on Deriv</p>
+                    </li>
+                    <li class="flex">
+                        <img class="w-4 h-6 object-contain mr-[10px]"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAwUExURUdwTCUlJSUlJSoqKiQkJSUlJSQkJSgoKCYmJiUlJSUlJSQkJf///21tbvz8/Obm51hrvygAAAALdFJOUwDt8xzex79HlZaCa1vn2wAAAN9JREFUKM9jYAAB9jYnlYwCBjiw1N4NBJsmw/hcYD5QZAGEzxy9Gwq2GoAFTHbDgTNYgTdCYAtICetuJBAAFFiN4N7/uwuoQxvO3/vm/CYDBk6Egntnzu+ewMCEpODM290KDNVICs7d3r2doRtFwe4dDNkoCnZvY/BGUbB7C4M20HaEgt2bgAJ/QCyoAqCA9+4/ICZUAVBLNpgNUwA0tBusGqYAaG01WDlMAdBhTGADYQqATucEWwlTAPQcyPt738AUAL0PDiCI24BgF7YgxAhk5GgQxh5RGFGJGdkoyQEAuqom61rnceAAAAAASUVORK5CYII="
+                            alt="Check Icon" />
+                        <p>Forex in more detail</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full sm:w-[70%] md:w-[60%]">
+                <img class="w-full mt-[-60px] md:mt-[-120px] mb-5"
+                    src="https://deriv.com/static/69b4af0b05c87273f6e5766249e5b13b/aa885/forex-ebook-inside-en.avif"
+                    alt="forex-book" />
+            </div>
+        </div>
+    </div>
+    <footer class="border-t border-[#e1e1e3] bg-white opacity-80 py-10">
+        <div class="mx-auto max-w-[1200px] w-[95%] lg:w-[90%] xl:w-[84%] 2xl:w-[80%]">
+            <div class="flex max-md:flex-col max-md:gap-[60px] justify-between items-center">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA5IiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTA5IDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBvcGFjaXR5PSIwLjgiIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8yODExXzIwODgzKSI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjIuNjg0NSAyLjgyMzU0TDIwLjc5MzMgMTMuNTQ4MkgxNC4yMjg5QzguMTA0NjEgMTMuNTQ4MiAyLjI2NzIxIDE4LjUwOTkgMS4xODUwMyAyNC42MzQxTDAuNzI2NjU2IDI3LjI0MDJDLTAuMzQ5NDUzIDMzLjM2NDQgMy43MzY0MyAzOC4zMjYxIDkuODU5MTcgMzguMzI2MUgxNS4zMzM4QzE5Ljc5NzYgMzguMzI2MSAyNC4wNDg5IDM0LjcxMjIgMjQuODMzNiAzMC4yNDk5TDI5Ljg3NTcgMS42NjY5OUwyMi42ODE0IDIuODIzNTRIMjIuNjg0NVpNMTguMDI2NCAyOS4yMzc2QzE3Ljc4NSAzMC42MTU3IDE2LjU0MzUgMzEuNzM4OSAxNS4xNjUzIDMxLjczODlIMTEuODM5OUM5LjA4NjYyIDMxLjczODkgNy4yNDU1NCAyOS41MDQ3IDcuNzI4MiAyNi43NDY5TDguMDE1MDYgMjUuMTIxM0M4LjUwMzc5IDIyLjM2ODEgMTEuMTI5NiAyMC4xMjkzIDEzLjg4MjggMjAuMTI5M0gxOS42MzM3TDE4LjAyNzkgMjkuMjM3NkgxOC4wMjY0Wk03MS4xMTg0IDM4LjMyNjFINzcuOTMxN0w4Mi4yMzkyIDEzLjg4OTdINzUuNDI1OEw3MS4xMTg0IDM4LjMyNjFaTTcwLjY4MjcgMTMuNjQwOEM3MS4xODUxIDEzLjcxNTIgNzEuNjg5IDEzLjgxMDggNzIuMTg2OSAxMy45MTdWMTMuOTE4Nkw3Mi4xOTE0IDEzLjkyMzFDNzIuMjIgMTMuOTI4NSA3Mi4yNDU5IDEzLjkzNjMgNzIuMjcxNiAxMy45NDRDNzIuMjk2MyAxMy45NTE1IDcyLjMyMDkgMTMuOTU4OSA3Mi4zNDc4IDEzLjk2NDFMNzEuMjgwOCAyMC4wMjc2QzcwLjcwMjUgMTkuODc3NCA3MC4wMTggMTkuNzE2NSA2OS4yMzMzIDE5LjU0NUM2OC40NDQgMTkuMzczNSA2Ny41NzI4IDE5LjI4ODUgNjYuNjI3MiAxOS4yODg1QzY2LjE5OTIgMTkuMjg4NSA2NS42ODAxIDE5LjMyNzkgNjUuMDcxNSAxOS40MDM4QzY0LjQ2MjkgMTkuNDc5NyA2My45OTk5IDE5LjU2NDcgNjMuNjc4MiAxOS42NjAzTDYwLjM4NzYgMzguMzMzNkg1My41Njk3TDU3LjY1MSAxNS4yMDExQzU4Ljk0NDIgMTQuNzY4NSA2MC40NTg5IDE0LjM1NTcgNjIuMTg5MiAxMy45Njg2QzYzLjkyMSAxMy41ODAxIDY1LjgwNzYgMTMuMzg0MyA2Ny44NTA2IDEzLjM4NDNDNjguMjE3OSAxMy4zODQzIDY4LjY1MDQgMTMuNDA4NiA2OS4xNjM0IDEzLjQ1NDFDNjkuNjcxOSAxMy40OTk2IDcwLjE4MDQgMTMuNTY2NCA3MC42ODI3IDEzLjY0MDhaTTQ1LjUxNjQgMTMuNTQzNkg0MC4yMTkzQzM1LjA1MTMgMTMuNTQzNiAzMC4xMjQ1IDE3LjcyOTcgMjkuMjEzOSAyMi44OTc3TDI4LjE0MjMgMjguOTcxOUMyNy4yMzE2IDM0LjE0IDMwLjY3ODUgMzguMzI2IDM1Ljg0NjYgMzguMzI2SDQ3LjEyODNMNDguMjg2MyAzMS43NTg2SDM3LjY4MzFDMzUuOTYxOSAzMS43NTg2IDM0LjgwOTkgMzAuMzY1MiAzNS4xMTY1IDI4LjYzOEwzNS4xNTE0IDI4LjQzMTZINTIuMjQ0N0w1My4wNzk1IDIzLjcwMjJMNTMuMjIwNyAyMi44OTc3QzU0LjEzMTMgMTcuNzI5NyA1MC42ODQ0IDEzLjU0MzYgNDUuNTE2NCAxMy41NDM2Wk00Ni4zODMgMjIuMzc1Nkw0Ni4zNDM2IDIyLjcyNzhIMzYuMTc5TDM2LjIzMzYgMjIuNDE1MUMzNi41NDAyIDIwLjY5MzkgMzguMTExMSAxOS4xNzkyIDM5LjgzNjggMTkuMTc5Mkg0My44MDc0QzQ1LjUxMzMgMTkuMTc5MiA0Ni42NjUzIDIwLjY2ODEgNDYuMzgzIDIyLjM3NDFWMjIuMzc1NlpNOTkuNzU5IDE3LjgxNDdDMTAwLjQyNCAxNi40MDYyIDEwMS4wMjIgMTUuMDk3OSAxMDEuNTQ1IDEzLjg4OTdIMTA4LjM2OUMxMDYuMzI2IDE4LjkyNzMgMTA0LjEyMSAyMy41MzIyIDEwMS44NDggMjcuNzE4M0M5OS4xNzQ3IDMyLjY0MDUgOTcuNzAwOSAzNS4yMzEzIDk1LjU2NjkgMzguMzI2MUg4OC43NDlDODcuNzA3OCAzNS4yMjY4IDg3LjE0OTMgMzIuNjQwNSA4Ni4yMDgyIDI3LjcxODNDODUuNDA4NCAyMy41MzA3IDg0LjgzMDEgMTguOTI3MyA4NC41NjMgMTMuODg5N0g5MS4zODA5QzkxLjQ3NjUgMTUuMDk3OSA5MS42MTE2IDE2LjQwNjIgOTEuNzgzMSAxNy44MTQ3QzkxLjk1NDYgMTkuMjE4NyA5Mi4xNDEzIDIwLjY0ODQgOTIuMzM3MSAyMi4wODczQzkyLjUzMjkgMjMuNTI2MiA5Mi43MzQ3IDI0LjkyNTYgOTIuOTQ1NyAyNi4yODg1QzkzLjE1NjcgMjcuNjUxNSA5My4zNzgzIDI4Ljg5IDkzLjYxOTYgMzAuMDA3MUM5NC4yNTQgMjguODkgOTQuOTE4OCAyNy42NTE1IDk1LjYwNzkgMjYuMjg4NUM5Ni4yOTcgMjQuOTMwMSA5Ni45OTY3IDIzLjUyNjIgOTcuNzAwOSAyMi4wODczQzk4LjQwNTIgMjAuNjQ4NCA5OS4wOTQyIDE5LjIyMzIgOTkuNzU5IDE3LjgxNDdaIiBmaWxsPSIjNDE0NjUyIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfMjgxMV8yMDg4MyI+CjxyZWN0IHdpZHRoPSIxMDguODg5IiBoZWlnaHQ9IjQwIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo="
+                    alt="deriv logo" width="96" height="36" style="width: 96px; height: 36px" />
+
+                <div class="flex gap-[26px] items-center justify-center">
+                    <a class="typography-link typography-hover typography typography-break-word typography-color-primary"
+                        href="https://www.facebook.com/derivdotcom" target="_blank"><img
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI0LjA4MSAwLjAwNjY1ODE0TDE5LjkyMzUgMEMxNS4yNTI3IDAgMTIuMjM0MyAzLjA5MTA0IDEyLjIzNDMgNy44NzUyNFYxMS41MDYzSDguMDU0MTFDNy42OTI5IDExLjUwNjMgNy40MDAzOSAxMS43OTg1IDcuNDAwMzkgMTIuMTU5MVYxNy40MkM3LjQwMDM5IDE3Ljc4MDYgNy42OTMyMyAxOC4wNzI1IDguMDU0MTEgMTguMDcyNUgxMi4yMzQzVjMxLjM0NzVDMTIuMjM0MyAzMS43MDggMTIuNTI2OCAzMiAxMi44ODggMzJIMTguMzQxOUMxOC43MDMxIDMyIDE4Ljk5NTYgMzEuNzA3NyAxOC45OTU2IDMxLjM0NzVWMTguMDcyNUgyMy44ODMyQzI0LjI0NDQgMTguMDcyNSAyNC41MzY5IDE3Ljc4MDYgMjQuNTM2OSAxNy40MkwyNC41Mzg5IDEyLjE1OTFDMjQuNTM4OSAxMS45ODYgMjQuNDY5OSAxMS44MjAyIDI0LjM0NzUgMTEuNjk3N0MyNC4yMjUxIDExLjU3NTIgMjQuMDU4MyAxMS41MDYzIDIzLjg4NDkgMTEuNTA2M0gxOC45OTU2VjguNDI4MkMxOC45OTU2IDYuOTQ4NzYgMTkuMzQ4OCA2LjE5NzczIDIxLjI3OTcgNi4xOTc3M0wyNC4wODAzIDYuMTk2NzNDMjQuNDQxMiA2LjE5NjczIDI0LjczMzcgNS45MDQ0MyAyNC43MzM3IDUuNTQ0MjNWMC42NTkxNTVDMjQuNzMzNyAwLjI5OTI4MyAyNC40NDE1IDAuMDA3MzIzOTUgMjQuMDgxIDAuMDA2NjU4MTRaIiBmaWxsPSIjNDE0NjUyIiBmaWxsLW9wYWNpdHk9IjAuOCIvPgo8L3N2Zz4K"
+                            alt="_t_Facebook_t_" width="24" height="24" /></a><a
+                        class="typography-link typography-hover typography typography-break-word typography-color-primary"
+                        href="https://www.instagram.com/deriv_official/" target="_blank"><img
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzI4MTFfMjA4OTMpIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04LjgzMDY1IDBIMjMuMTY5QzI4LjAzODYgMCAzMi4wMDAyIDMuOTYxNjIgMzIgOC44MzA4NFYyMy4xNjkyQzMyIDI4LjAzODQgMjguMDM4NiAzMiAyMy4xNjkgMzJIOC44MzA2NUMzLjk2MTQzIDMyIDAgMjguMDM4NiAwIDIzLjE2OTJWOC44MzA4NEMwIDMuOTYxNjIgMy45NjE0MyAwIDguODMwNjUgMFpNMjMuMTY4NiAyOS4xNjA4QzI2LjQ3MjUgMjkuMTYwOCAyOS4xNjA0IDI2LjQ3MzEgMjkuMTYwNCAyMy4xNjkySDI5LjE2MDJWOC44MzA4OEMyOS4xNjAyIDUuNTI3MTkgMjYuNDcyMyAyLjgzOTIzIDIzLjE2ODQgMi44MzkyM0g4LjgzMDA4QzUuNTI2MzkgMi44MzkyMyAyLjgzODYyIDUuNTI3MTkgMi44Mzg2MiA4LjgzMDg4VjIzLjE2OTJDMi44Mzg2MiAyNi40NzMxIDUuNTI2MzkgMjkuMTYxIDguODMwMDggMjkuMTYwOEgyMy4xNjg2Wk03LjYxOTYzIDE2LjAwMDJDNy42MTk2MyAxMS4zNzg3IDExLjM3OTMgNy42MTkwMiAxNi4wMDA2IDcuNjE5MDJDMjAuNjIxOSA3LjYxOTAyIDI0LjM4MTUgMTEuMzc4NyAyNC4zODE1IDE2LjAwMDJDMjQuMzgxNSAyMC42MjE0IDIwLjYyMTkgMjQuMzgwOSAxNi4wMDA2IDI0LjM4MDlDMTEuMzc5MyAyNC4zODA5IDcuNjE5NjMgMjAuNjIxNCA3LjYxOTYzIDE2LjAwMDJaTTEwLjUwNDkgMTUuOTk5OUMxMC41MDQ5IDE5LjAyOTkgMTIuOTcwMSAyMS40OTQ4IDE2IDIxLjQ5NDhDMTkuMDI5OSAyMS40OTQ4IDIxLjQ5NTIgMTkuMDI5OSAyMS40OTUyIDE1Ljk5OTlDMjEuNDk1MiAxMi45Njk3IDE5LjAzMDEgMTAuNTA0NiAxNiAxMC41MDQ2QzEyLjk2OTkgMTAuNTA0NiAxMC41MDQ5IDEyLjk2OTcgMTAuNTA0OSAxNS45OTk5Wk0yMy40MTYyIDUuODkwOTVDMjMuNzY5NyA1LjUzNTk3IDI0LjI2MTMgNS4zMzMzNyAyNC43NjE3IDUuMzMzMzdDMjUuMjYzOSA1LjMzMzM3IDI1Ljc1NTYgNS41MzU5NyAyNi4xMDg5IDUuODkwOTVDMjYuNDYzOSA2LjI0NDIgMjYuNjY2NSA2LjczNTk3IDI2LjY2NjUgNy4yMzgxNEMyNi42NjY1IDcuNzM4NTcgMjYuNDYzOSA4LjIzMDM0IDI2LjEwODkgOC41ODUzMkMyNS43NTM5IDguOTM4NTcgMjUuMjYzOSA5LjE0MjkgMjQuNzYxNyA5LjE0MjlDMjQuMjYxMyA5LjE0MjkgMjMuNzY5NSA4LjkzODU3IDIzLjQxNjIgOC41ODUzMkMyMy4wNjEzIDguMjMwMzQgMjIuODU2OSA3LjczODc0IDIyLjg1NjkgNy4yMzgxNEMyMi44NTY5IDYuNzM1OTcgMjMuMDYxMSA2LjI0NDIgMjMuNDE2MiA1Ljg5MDk1WiIgZmlsbD0iIzQxNDY1MiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8yODExXzIwODkzIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo="
+                            alt="_t_Instagram_t_" width="24" height="24" /></a><a
+                        class="typography-link typography-hover typography typography-break-word typography-color-primary"
+                        href="https://twitter.com/derivdotcom/" target="_blank"><img
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMyIDUuNzU2NTNDMzAuODEgNi4yOTE5MiAyOS41NDIgNi42NDY3OSAyOC4yMiA2LjgxOTFDMjkuNTggNS45ODYyOCAzMC42MTggNC42Nzc1NiAzMS4xMDYgMy4xMDAxMkMyOS44MzggMy44NzU1MSAyOC40MzggNC40MjMyIDI2Ljk0NiA0LjcyODg0QzI1Ljc0MiAzLjQxMzk3IDI0LjAyNiAyLjU5OTYxIDIyLjE1NCAyLjU5OTYxQzE4LjUyMiAyLjU5OTYxIDE1LjU5OCA1LjYyMzIgMTUuNTk4IDkuMzI5ODdDMTUuNTk4IDkuODYzMiAxNS42NDIgMTAuMzc2IDE1Ljc1IDEwLjg2NDJDMTAuMjk2IDEwLjU5MTQgNS40NyA3LjkxMDM4IDIuMjI4IDMuODI2MjhDMS42NjIgNC44MzM0NiAxLjMzIDUuOTg2MjggMS4zMyA3LjIyNzNDMS4zMyA5LjU1NzU2IDIuNSAxMS42MjMyIDQuMjQ0IDEyLjgxOTFDMy4xOSAxMi43OTg2IDIuMTU2IDEyLjQ4NDcgMS4yOCAxMS45OTA0QzEuMjggMTIuMDEwOSAxLjI4IDEyLjAzNzYgMS4yOCAxMi4wNjQyQzEuMjggMTUuMzM0IDMuNTU0IDE4LjA0OTkgNi41MzYgMTguNjc1NUM2LjAwMiAxOC44MjUzIDUuNDIgMTguODk3IDQuODE2IDE4Ljg5N0M0LjM5NiAxOC44OTcgMy45NzIgMTguODcyNCAzLjU3NCAxOC43ODIyQzQuNDI0IDIxLjQ0NjggNi44MzYgMjMuNDA1OCA5LjcwNCAyMy40Njk0QzcuNDcyIDI1LjI2MDEgNC42MzggMjYuMzM5MSAxLjU3IDI2LjMzOTFDMS4wMzIgMjYuMzM5MSAwLjUxNiAyNi4zMTQ1IDAgMjYuMjQ2OEMyLjkwNiAyOC4xNjg4IDYuMzUgMjkuMjY2MyAxMC4wNjQgMjkuMjY2M0MyMi4xMzYgMjkuMjY2MyAyOC43MzYgMTkuMDA5OSAyOC43MzYgMTAuMTE5NkMyOC43MzYgOS44MjIxNyAyOC43MjYgOS41MzQ5OSAyOC43MTIgOS4yNDk4N0MzMC4wMTQgOC4zMDIxNyAzMS4xMDggNy4xMTg1OCAzMiA1Ljc1NjUzWiIgZmlsbD0iIzQxNDY1MiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPC9zdmc+Cg=="
+                            alt="_t_Twitter_t_" width="24" height="24" /></a><a
+                        class="typography-link typography-hover typography typography-break-word typography-color-primary"
+                        href="https://www.youtube.com/@deriv" target="_blank"><img
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zMC4yNTUzIDYuMzM0OTVDMzAuNzUyMiA2LjgzNzUzIDMxLjExMDIgNy40NjI5OSAzMS4yOTM4IDguMTQ5MDZDMzIuMzUwNyAxMi40NTIgMzIuMTA2NSAxOS4yNDc4IDMxLjMxNDMgMjMuNzE2OEMzMS4xMzA4IDI0LjQwMjkgMzAuNzcyNyAyNS4wMjg0IDMwLjI3NTggMjUuNTMwOUMyOS43Nzg5IDI2LjAzMzUgMjkuMTYwNSAyNi4zOTU2IDI4LjQ4MjIgMjYuNTgxM0MyNS45OTg5IDI3LjI2NjMgMTYuMDA0MyAyNy4yNjYzIDE2LjAwNDMgMjcuMjY2M0MxNi4wMDQzIDI3LjI2NjMgNi4wMDk3NCAyNy4yNjYzIDMuNTI2NDggMjYuNTgxM0MyLjg0ODE1IDI2LjM5NTYgMi4yMjk3NSAyNi4wMzM1IDEuNzMyODUgMjUuNTMwOUMxLjIzNTk1IDI1LjAyODQgMC44Nzc4OTEgMjQuNDAyOSAwLjY5NDMzOCAyMy43MTY4Qy0wLjM2ODc0MSAxOS40MzI2IC0wLjA3NzMxOCAxMi42MzI2IDAuNjczODE2IDguMTY5ODJDMC44NTczNjkgNy40ODM3NSAxLjIxNTQyIDYuODU4MjggMS43MTIzMiA2LjM1NTcxQzIuMjA5MjMgNS44NTMxNCAyLjgyNzYzIDUuNDkxIDMuNTA1OTYgNS4zMDUzNUM1Ljk4OTIxIDQuNjIwMzcgMTUuOTgzOCA0LjU5OTYxIDE1Ljk4MzggNC41OTk2MUMxNS45ODM4IDQuNTk5NjEgMjUuOTc4NCA0LjU5OTYxIDI4LjQ2MTcgNS4yODQ1OUMyOS4xNCA1LjQ3MDI0IDI5Ljc1ODQgNS44MzIzOCAzMC4yNTUzIDYuMzM0OTVaTTIxLjA5NCAxNS45MzNMMTIuODAyOCAyMC43OTAxVjExLjA3NThMMjEuMDk0IDE1LjkzM1oiIGZpbGw9IiM0MTQ2NTIiIGZpbGwtb3BhY2l0eT0iMC44Ii8+Cjwvc3ZnPgo="
+                            alt="_t_Youtube_t_" width="24" height="24" /></a><a
+                        class="typography-link typography-hover typography typography-break-word typography-color-primary"
+                        href="https://www.linkedin.com/company/derivdotcom/" target="_blank"><img
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEuMTg0NTEgNi45MzI5NEg1LjkyNjZDNi41ODA4MiA2LjkzMjk0IDcuMTExMTEgNi41MDMxMiA3LjExMTExIDUuOTcyODVWMi41NTk3QzcuMTExMTEgMi4wMjk0MyA2LjU4MDgyIDEuNTk5NjEgNS45MjY2IDEuNTk5NjFIMS4xODQ1MUMwLjUzMDIyNyAxLjU5OTYxIDAgMi4wMjk0MyAwIDIuNTU5N1Y1Ljk3Mjg1QzAgNi41MDMxMiAwLjUzMDIyNyA2LjkzMjk0IDEuMTg0NTEgNi45MzI5NFoiIGZpbGw9IiM0MTQ2NTIiIGZpbGwtb3BhY2l0eT0iMC44Ii8+CjxwYXRoIGQ9Ik0xLjE4NDUxIDMwLjA0NDFINS45MjY2QzYuNTgwODIgMzAuMDQ0MSA3LjExMTExIDI5LjU5NSA3LjExMTExIDI5LjA0MTFWMTEuNDkxNEM3LjExMTExIDEwLjkzNzQgNi41ODA4MiAxMC40ODg1IDUuOTI2NiAxMC40ODg1SDEuMTg0NTFDMC41MzAyMjcgMTAuNDg4NSAwIDEwLjkzNzQgMCAxMS40OTE0VjI5LjA0MTFDMCAyOS41OTUgMC41MzAyMjcgMzAuMDQ0MSAxLjE4NDUxIDMwLjA0NDFaIiBmaWxsPSIjNDE0NjUyIiBmaWxsLW9wYWNpdHk9IjAuOCIvPgo8cGF0aCBkPSJNMjcuODc4OCA5LjQ3MzY0QzI5LjAxMDMgOS45ODI0OSAyOS44NjYgMTAuNjMxNyAzMC40NDYzIDExLjQyMTFDMzEuMDI2OSAxMi4yMTA5IDMxLjQzMTEgMTMuMTA2OSAzMS42NTg2IDE0LjEwOUMzMS44ODYxIDE1LjExMSAzMiAxNi41NDYgMzIgMTguNDEzNVYyOC45Nzc5QzMyIDI5LjU2NjcgMzEuNTM4MiAzMC4wNDQgMzAuOTY4NSAzMC4wNDRIMjYuODM4OUMyNi4yNjkxIDMwLjA0NCAyNS44MDc0IDI5LjU2NjcgMjUuODA3NCAyOC45Nzc5VjIxLjEwMTJDMjUuODA3NCAxOC40ODk1IDI1LjY3NTIgMTYuODAwMyAyNS40MTA2IDE2LjAzMzVDMjUuMTQ2MiAxNS4yNjY1IDI0LjcxNjQgMTQuNjcwOCAyNC4xMjEzIDE0LjI0NTZDMjMuNTI2MSAxMy44MjAzIDIyLjgwOTggMTMuNjA3NyAyMS45NzI0IDEzLjYwNzdDMjAuODk5NyAxMy42MDc3IDE5LjkzNzUgMTMuOTExNSAxOS4wODUyIDE0LjUxODlDMTguMjMzMSAxNS4xMjYzIDE3LjY0ODkgMTUuOTMxIDE3LjMzMzIgMTYuOTMzMUMxNy4wMTczIDE3LjkzNTEgMTYuODU5NCAxOS43ODc3IDE2Ljg1OTQgMjIuNDkwNFYyOC45Nzc5QzE2Ljg1OTQgMjkuNTY2NyAxNi4zOTc3IDMwLjA0NDEgMTUuODI3OSAzMC4wNDQxSDExLjY5ODJDMTEuMTI4NSAzMC4wNDQxIDEwLjY2NjcgMjkuNTY2NyAxMC42NjY3IDI4Ljk3NzlWMTAuMzIzNEMxMC42NjY3IDkuNzM0NiAxMS4xMjg0IDkuMjU3NCAxMS42OTgyIDkuMjU3NEgxNS4zODcyQzE1Ljk1NjkgOS4yNTc0IDE2LjQxODggOS43MzQ2IDE2LjQxODggMTAuMzIzNFYxMS43NDQ2QzE2LjQxODggMTIuMzMzNCAxNi42OTc1IDEyLjQyODYgMTcuMDgwOSAxMS45OTMyQzE5LjAwNzkgOS44MDQ3NCAyMS4zNTgzIDguNzEwNzIgMjQuMTMyMSA4LjcxMDcyQzI1LjQ5ODUgOC43MTA3MiAyNi43NDc0IDguOTY1MTUgMjcuODc4OCA5LjQ3MzY0WiIgZmlsbD0iIzQxNDY1MiIgZmlsbC1vcGFjaXR5PSIwLjgiLz4KPC9zdmc+Cg=="
+                            alt="_t_Linkedin_t_" width="24" height="24" /></a><a
+                        class="typography-link typography-hover typography typography-break-word typography-color-primary"
+                        href="https://t.me/derivdotcomofficial" target="_blank"><img
+                            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMxLjUxNjYgMi45NDM2NEMzMS4xNjMgMi42NTYzNSAzMC42MjAzIDIuNTk0OTYgMzAuMzc0OCAyLjU5OTg3QzI5LjI2NzMgMi42MTk1MiAyNy41NjU3IDMuMjExMjkgMTkuMzg0IDYuNjE0NkMxNi41MTYgNy44MDU1MiAxMC43ODk4IDEwLjI3MzMgMi4yMDA1IDE0LjAxNTVDMC44MDU3ODYgMTQuNTcwNCAwLjA3NDA1MDkgMTUuMTEzMSAwLjAwNzc1Mjc1IDE1LjY0MzRDLTAuMTA0NTUyIDE2LjUzOTcgMS4wMTU5NiAxNi44OTI3IDIuNTQzOTQgMTcuMzc0MUMyLjc1MzIgMTcuNDQgMi45NzAxIDE3LjUwODQgMy4xOTI1MiAxNy41ODA4QzQuNjk3NzMgMTguMDY5NSA2LjcyMTA1IDE4LjY0MTYgNy43NzIgMTguNjYxMkM4LjcyNzE5IDE4LjY4NTggOS43OTA0MSAxOC4yOTI5IDEwLjk2OSAxNy40ODI2QzE4Ljk5MzYgMTIuMDY4MiAyMy4xMzYgOS4zMjc5MiAyMy4zOTYzIDkuMjY4OTlDMjMuNTgwNCA5LjIyNzI0IDIzLjgzNTggOS4xNzU2OCAyNC4wMDc3IDkuMzI3OTJDMjQuMTc5NiA5LjQ4MDE2IDI0LjE2MjQgOS43Njk5MSAyNC4xNDUyIDkuODQ4NDhDMjQuMDMzIDEwLjMyMTQgMTkuNjM4MSAxNC40MDgzIDE3LjM1NCAxNi41MzI0QzE2LjYzNzUgMTcuMTk4NyAxNi4xMjg3IDE3LjY3MTggMTYuMDI0OSAxNy43Nzk3QzE1Ljc5NDggMTguMDE4MyAxNS41NjA0IDE4LjI0NDEgMTUuMzM1IDE4LjQ2MTJDMTMuOTM2MyAxOS44MDgyIDEyLjg4NTUgMjAuODIwMyAxNS4zOTE0IDIyLjQ2OTdDMTYuNTk2NSAyMy4yNjQ1IDE3LjU2MDcgMjMuOTIxNCAxOC41MjMxIDI0LjU3N0MxOS41NzA1IDI1LjI5MDYgMjAuNjE1OCAyNi4wMDI3IDIxLjk2NzIgMjYuODg5NkMyMi4zMTMyIDI3LjExNjIgMjIuNjQzNSAyNy4zNTE2IDIyLjk2NTMgMjcuNTgwOUMyNC4xODQ4IDI4LjQ1IDI1LjI4MDMgMjkuMjMwNyAyNi42MzI2IDI5LjEwNDRDMjcuNDIwOCAyOS4wMzMyIDI4LjIzMzYgMjguMjk0MSAyOC42NDYxIDI2LjA4NDJDMjkuNjIzNCAyMC44NjYzIDMxLjU0MzYgOS41NjExOSAzMS45ODU2IDQuOTAwNjdDMzIuMDI0OCA0LjQ5MzA2IDMxLjk3NTcgMy45NzAwNCAzMS45MzY0IDMuNzQxNjhDMzEuOTAxNCAzLjQzMjQ3IDMxLjc1MTUgMy4xNDc2OSAzMS41MTY2IDIuOTQzNjRaIiBmaWxsPSIjNDE0NjUyIiBmaWxsLW9wYWNpdHk9IjAuOCIvPgo8L3N2Zz4K"
+                            alt="_t_Telegram_t_" width="24" height="24" /></a>
+                </div>
+            </div>
+
+            <p class="text-[#414652] text-xs md:text-sm mt-8 md:leading-relaxed leading-relaxed">
+                Deriv (FX) Ltd is licensed by the Labuan Financial Services Authority
+                (<a target="_blank" href="https://deriv.com/regulatory/Deriv_(FX)_Ltd.pdf"
+                    class="font-bold hover:underline">licence</a>). Deriv (BVI) Ltd is licensed by the British Virgin
+                Islands
+                Financial Services Commission (<a target="_blank" href="https://deriv.com/regulatory/Deriv_(FX)_Ltd.pdf"
+                    class="font-bold hover:underline">licence</a>). Deriv (V) Ltd is licensed by the Vanuatu Financial
+                Services
+                Commission (<a target="_blank" href="https://deriv.com/regulatory/Deriv_(FX)_Ltd.pdf"
+                    class="font-bold hover:underline">licence</a>). Deriv (SVG) LLC has a registered office at First
+                Floor, SVG
+                Teachers Credit Union Uptown Building, Corner of James and Middle
+                Street, Kingstown P.O., St Vincent and the Grenadines. Deriv.com
+                Limited is the holding company for the above subsidiaries with the
+                registration number 71479 and the registered address is located at 2nd
+                Floor, 1 Cornet Street, St Peter Port, Guernsey, GY1 1BZ.
+            </p>
+
+            <p class="text-[#414652] text-xs md:text-sm mt-4 md:leading-relaxed leading-relaxed">
+                Please read our
+                <a href="https://deriv.com/terms-and-conditions/#clients" class="font-bold hover:underline">Terms and
+                    conditions</a>,
+                <a href="https://deriv.com/tnc/risk-disclosure.pdf" target="_blank"
+                    class="font-bold hover:underline">Risk disclosure</a>, and
+                <a href="https://deriv.com/responsible/" class="font-bold hover:underline">Secure and responsible
+                    trading</a>
+                to fully understand the risks involved before using our services. The
+                information on this website does not constitute investment advice.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const submit_btn_n1 = document.getElementById("myBtn_n1");
+        const ckbx_n1 = document.getElementById("ckbx_n1");
+        const email_field_n1 = document.getElementById("email_input_n1");
+        const display_email = document.getElementById("email_sent_to");
+        const form_element = document.getElementById("get_ebook_form");
+        const email_sent_card = document.getElementById("email_sent_card");
+        const RUDDERSTACK_URL = "https:\/\/deriv-dataplane.rudderstack.com";
+        const RUDDERSTACK_KEY = "1lN3tsFD2nruGFgM5F074DC2hMB";
+
+        rudderanalytics = window.rudderanalytics = [];
+        const methods = [
+            "load",
+            "page",
+            "track",
+            "identify",
+            "alias",
+            "group",
+            "ready",
+            "reset",
+
+            "setAnonymousId",
+            "getAnonymousId",
+        ];
+        for (var i = 0; i < methods.length; i++) {
+            var method = methods[i];
+            rudderanalytics[method] = (function (methodName) {
+                return function () {
+                    rudderanalytics.push(
+                        [methodName].concat(Array.prototype.slice.call(arguments))
+                    );
+                };
+            })(method);
+        }
+        rudderanalytics.load(RUDDERSTACK_KEY, RUDDERSTACK_URL);
+
+        ckbx_n1.addEventListener("click", fckbx_n1);
+        submit_btn_n1.addEventListener("click", f_submit_btn_n1);
+        email_field_n1.addEventListener("keyup", f_email_input_errmsg_n1);
+
+        function f_email_input_errmsg_n1() {
+            const email = email_field_n1.value;
+            f_check_submit_btn_n1();
+            if (is_emailValid(email)) {
+                {
+                    /*  document.getElementById("pEmail_n1").style.display = "none";  */
+                }
+            } else {
+                {
+                    /*  document.getElementById("pEmail_n1").style.display = "block";  */
+                }
+            }
+        }
+
+        function fckbx_n1() {
+            f_check_submit_btn_n1();
+        }
+
+        function f_check_submit_btn_n1() {
+            const email = email_field_n1.value;
+            if (ckbx_n1.checked == true && is_emailValid(email)) {
+                submit_btn_n1.disabled = false;
+            } else {
+                submit_btn_n1.disabled = true;
+            }
+        }
+
+        async function f_submit_btn_n1() {
+            const email = email_field_n1.value;
+            form_element.style.display = "none";
+            email_sent_card.style.display = "flex";
+            if (is_emailValid(email) && ckbx_n1.checked == true) {
+                display_email.innerText = email;
+                const bro = await rudderanalytics.track(
+                    "signup_redirect_from_lead_pages"
+                );
+                console.log("track signup_redirect_from_lead_pages", bro);
+                const verify_email_req = getVerifyEmailRequest(email);
+                console.log(verify_email_req);
+                window.ws.send(JSON.stringify(verify_email_req));
+            } else {
+                if (ckbx_n1.checked == false) {
+                    {
+                        {
+                            /*  document.getElementById("pAgree_n1").style.display = "block";  */
+                        }
+                    }
+                    {
+                        {
+                            /*  document.getElementById("pEmail_n1").style.display = "block";  */
+                        }
+                    }
+                    if (is_emailValid(email)) {
+                        {
+                            {
+                                /*  document.getElementById("pEmail_n1").style.visibility = "hidden";  */
+                            }
+                        }
+                    }
+                } else if (email == "") {
+                    {
+                        {
+                            /*  document.getElementById("pEmail_n1").innerHTML = "Insira o seu correo eletrónico."  */
+                        }
+                    }
+                    {
+                        {
+                            /*  document.getElementById("pEmail_n1").style.visibility = "visible";  */
+                        }
+                    }
+                } else {
+                    {
+                        {
+                            /*  document.getElementById("pEmail_n1").innerHTML = "Insira um correo eletrónico válido."  */
+                        }
+                    }
+                    {
+                        {
+                            /*  document.getElementById("pEmail_n1").style.visibility = "visible";  */
+                        }
+                    }
+                }
+            }
+        }
+
+        function is_emailValid(email) {
+            if (
+                /^\w+([!#$%&'*+-/=?^_`{|}~\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+                    email
+                )
+            )
+                return true;
+            return false;
+        }
+
+        /// social login
+        const getDataLink = (data) => {
+            let data_link = "";
+            Object.keys(data).forEach((elem) => {
+                data_link += `&${elem}=${data[elem]}`;
+            });
+            return data_link;
+        };
+
+        const loginUrl = (platform) => {
+            const cookies = getCookiesFields();
+            const cookies_objects = getCookiesObject(cookies);
+            const cookies_value = getDataObjFromCookies(cookies_objects, cookies);
+            const cookies_link = getDataLink(cookies_value);
+            const affiliate_tracking = Cookies.getJSON("affiliate_tracking");
+            const affiliate_token_link = affiliate_tracking
+                ? `&affiliate_token=${affiliate_tracking}`
+                : "";
+            const social_signup = platform ? `&social_signup=${platform}` : "";
+            const lang = "hi";
+            return `https://oauth.deriv.com/oauth2/authorize?app_id=16929&l=${lang}&brand=deriv&${affiliate_token_link}${cookies_link}&platform=${social_signup}`;
+        };
+
+        window.onload = async () => {
+            document.querySelectorAll(".social-media-login").forEach((e) => {
+                e.addEventListener("click", () => {
+                    const platform = e.getAttribute("data-platform");
+                    window.location.href = loginUrl(platform);
+                });
+            });
+
+            // Create a GrowthBook instance
+            const gb = new growthbook.GrowthBook({
+                apiHost: "https://cdn.growthbook.io",
+                clientKey: "sdk-0aHHaxKhwn0bP1HE",
+                // Enable easier debugging during development
+                enableDevMode: true,
+                // Update the instance in realtime as features change in GrowthBook
+                subscribeToChanges: true,
+                // Targeting attributes
+                attributes: {
+                    id: "123",
+                    country: "US",
+                },
+                // Only required for A/B testing
+                // Called every time a user is put into an experiment
+                trackingCallback: (experiment, result) => {
+                    console.log("Experiment Viewed", {
+                        experimentId: experiment.key,
+                        variationId: result.key,
+                    });
+                },
+            });
+
+            // Wait for features to be available
+            await gb.loadFeatures();
+
+            const homepage = gb.getFeatureValue("homepage", "default");
+        };
+    </script>
+</body>
+
+</html>
