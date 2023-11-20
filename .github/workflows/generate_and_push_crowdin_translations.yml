@@ -27,7 +27,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Checkout
         uses: actions/checkout@v4
-
+        with: 
+          token: ${{ secrets.ACTIONS_PAT }}
       - name: Extract translations from templates
         run: |
           npm install
@@ -49,6 +50,6 @@ jobs:
           pull_request_title: "translations: 📚 sync translations with crowdin"
           pull_request_body: "translations: 📚 sync translations with crowdin"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
