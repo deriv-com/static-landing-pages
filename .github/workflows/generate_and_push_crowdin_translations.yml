@@ -28,7 +28,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with: 
-          ssh-key: ${{ secrets.ACTIONS_PAT }}
+          token: ${{ secrets.ACTIONS_PAT }}
       - name: Extract translations from templates
         run: |
           npm install
