@@ -175,9 +175,12 @@ window.onload = async () => {
         }
 
         if (result.key === "1") {
+          const queryParams = window.location.search
+            ? window.location.search + "&tpr=true"
+            : "?tpr=true";
+
           window.location.href =
-            "https://lp.deriv.com/free-forex-ebook/en/" +
-            window.location.search;
+            "https://lp.deriv.com/free-forex-ebook/en/" + queryParams;
         }
       }
     },
