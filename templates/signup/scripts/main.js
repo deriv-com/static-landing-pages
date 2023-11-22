@@ -100,7 +100,6 @@ const initializeWebSocket = () => {
       const lang = document.querySelector("html").getAttribute("lang");
       const email = response.echo_req.verify_email;
 
-
       const newUrl = `${window.location.origin}/verify-email/${lang}`;
       const searchParams = new URLSearchParams({ email });
       window.location.assign(`${newUrl}?${searchParams}`);
@@ -170,12 +169,16 @@ window.onload = async () => {
         variationId: result.key,
       });
 
-      if(result.key === "0") {
-        document.querySelector('body').classList.remove('hidden');
-      }
+      if (experiment.key === "aa-test-js-redirect") {
+        if (result.key === "0") {
+          document.querySelector("body").classList.remove("hidden");
+        }
 
-      if(result.key === "1") {
-        window.location.href = 'https://lp.deriv.com/free-forex-ebook/en/' + window.location.search;
+        if (result.key === "1") {
+          window.location.href =
+            "https://lp.deriv.com/free-forex-ebook/en/" +
+            window.location.search;
+        }
       }
     },
   });
