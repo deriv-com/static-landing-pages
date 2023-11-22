@@ -1,8 +1,3 @@
-const templates = {
-  lsTestFeatureOn: `The Feature is on`,
-  lsTestFeatureOff: `This is Default`,
-};
-
 const submit_btn_n1 = document.getElementById("myBtn_n1");
 const ckbx_n1 = document.getElementById("ckbx_n1");
 const email_field_n1 = document.getElementById("email_input_n1");
@@ -174,23 +169,18 @@ window.onload = async () => {
         experimentId: experiment.key,
         variationId: result.key,
       });
+
+      if(result.key === "0") {
+        document.querySelector('body').classList.remove('hidden');
+      }
+
+      if(result.key === "1") {
+        window.location.href = 'https://lp.deriv.com/free-forex-ebook/en/' + window.location.search;
+      }
     },
   });
 
   await gb.loadFeatures();
-
-  const lsTestFeature = gb.getFeatureValue("ls-test-feature", {
-    key: "no-value",
-  });
-  console.log(lsTestFeature.key);
-
-  const heading = document.getElementById("ls-test-feature-flag");
-
-  if (lsTestFeature.key === "no-value") {
-    heading.innerHTML = templates.lsTestFeatureOff;
-  } else {
-    heading.innerHTML = templates.lsTestFeatureOn;
-  }
 };
 
 initializeWebSocket();
