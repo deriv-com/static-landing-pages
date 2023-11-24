@@ -1,3 +1,5 @@
+let is_under_experiment = false;
+
 const submit_btn_n1 = document.getElementById("myBtn_n1");
 const ckbx_n1 = document.getElementById("ckbx_n1");
 const email_field_n1 = document.getElementById("email_input_n1");
@@ -164,6 +166,8 @@ window.onload = async () => {
       country: "US",
     },
     trackingCallback: (experiment, result) => {
+      is_under_experiment = true;
+
       console.log("Experiment Viewed", {
         experimentId: experiment.key,
         variationId: result.key,
@@ -187,6 +191,10 @@ window.onload = async () => {
   });
 
   await gb.loadFeatures();
+
+  if(!is_under_experiment) {
+    document.querySelector("body").classList.remove("hidden");
+  }
 };
 
 initializeWebSocket();
