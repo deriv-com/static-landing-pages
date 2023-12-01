@@ -1,10 +1,99 @@
 let is_under_experiment = false;
 
+const formElementContainer = document.getElementById(
+  "signup_provider_button_container",
+);
 const submit_btn_n1 = document.getElementById("myBtn_n1");
 const ckbx_n1 = document.getElementById("ckbx_n1");
 const email_field_n1 = document.getElementById("email_input_n1");
 const RUDDERSTACK_URL = process.env.RUDDERSTACK_URL;
 const RUDDERSTACK_KEY = process.env.RUDDERSTACK_KEY;
+
+const templates = {
+  signup_provider_visible__apple: `
+        <button
+          data-platform="apple"
+          style="font-weight: 700"
+          class="flex items-center justify-center w-full h-12 gap-[0.4rem] text-xs font-bold bg-black text-white rounded-2xl hover:opacity-70 social-media-login"
+        >
+          <img
+            class="h-6 w-6"
+            height="24px"
+            width="24px"
+            alt="apple"
+            src="https://static.deriv.com/email/images/icons/social-apple-white.png"
+          />
+          <span class="el__t_string__el">Apple</span>
+        </button>
+    `,
+  signup_provider_visible__facebook: `
+        <button
+          data-platform="facebook"
+          style="font-weight: 700"
+          class="flex items-center justify-center w-full h-12 gap-[0.4rem] text-xs font-bold bg-[#1877f2] text-white rounded-2xl hover:opacity-70 social-media-login"
+        >
+          <img
+            class="h-6 w-6"
+            height="24px"
+            width="24px"
+            alt="facebook"
+            src="https://static.deriv.com/email/images/icons/social-facebook-blue.png"
+          />
+          <span class="el__t_string__el">Facebook</span>
+        </button>
+    `,
+  signup_provider_visible__google: `
+        <button
+          data-platform="google"
+          style="font-weight: 700"
+          class="flex items-center justify-center w-full h-12 gap-[0.4rem] text-xs font-bold bg-white border border-[#d6dadb] rounded-2xl hover:opacity-70 social-media-login"
+        >
+          <img
+            class="h-6 w-6"
+            height="24px"
+            width="24px"
+            alt="google"
+            src="https://static.deriv.com/email/images/icons/social-google.png"
+          />
+          <span class="el__t_string__el">Google</span>
+        </button>
+    `,
+};
+
+function renderGoogleButton() {
+  formElementContainer.insertAdjacentHTML(
+    "beforeend",
+    templates.signup_provider_visible__google,
+  );
+}
+
+function renderFacebookButton() {
+  formElementContainer.insertAdjacentHTML(
+    "beforeend",
+    templates.signup_provider_visible__facebook,
+  );
+}
+
+function renderAppleButton() {
+  formElementContainer.insertAdjacentHTML(
+    "beforeend",
+    templates.signup_provider_visible__apple,
+  );
+}
+
+function renderButton(provider) {
+  if (provider === "google") {
+    renderGoogleButton();
+  }
+
+  if (provider === "facebook") {
+    renderFacebookButton();
+  }
+
+  if (provider === "apple") {
+    renderAppleButton();
+  }
+}
 
 rudderanalytics = window.rudderanalytics = [];
 const methods = [
@@ -22,10 +111,10 @@ const methods = [
 ];
 for (var i = 0; i < methods.length; i++) {
   var method = methods[i];
-  rudderanalytics[method] = (function (methodName) {
-    return function () {
+  rudderanalytics[method] = (function(methodName) {
+    return function() {
       rudderanalytics.push(
-        [methodName].concat(Array.prototype.slice.call(arguments))
+        [methodName].concat(Array.prototype.slice.call(arguments)),
       );
     };
   })(method);
@@ -88,7 +177,7 @@ const getVerifyEmailRequest = (formatted_email) => {
 
 const initializeWebSocket = () => {
   window.ws = new WebSocket(
-    "wss://blue.derivws.com/websockets/v3?app_id=16929&l=en&brand=deriv"
+    "wss://blue.derivws.com/websockets/v3?app_id=16929&l=en&brand=deriv",
   );
 
   window.ws.onmessage = (message) => {
@@ -125,7 +214,7 @@ async function f_submit_btn_n1() {
 function is_emailValid(email) {
   if (
     /^\w+([!#$%&'*+-/=?^_`{|}~\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
-      email
+      email,
     )
   )
     return true;
@@ -192,7 +281,27 @@ window.onload = async () => {
 
   await gb.loadFeatures();
 
-  if(!is_under_experiment) {
+  const signup_provider_sequence = gb.getFeatureValue(
+    "signup_provider_sequence",
+    { sequence: ["google", "facebook", "apple"], stack: "vertical" },
+  );
+
+  signup_provider_sequence.sequence.forEach((provider) => {
+    const is_visible = gb.isOn(`signup_provider_visible__${provider}`);
+
+    if (!is_visible) {
+      return;
+    }
+
+    renderButton(provider);
+  });
+
+  if (signup_provider_sequence.stack === "horizontal") {
+    formElementContainer.classList.add("flex-row");
+    formElementContainer.classList.remove("flex-col");
+  }
+
+  if (!is_under_experiment) {
     document.querySelector("body").classList.remove("hidden");
   }
 };
