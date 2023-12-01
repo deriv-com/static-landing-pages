@@ -21,14 +21,12 @@ const pageLanguages = program.args[3];
 // Help command for the script to show the usage
 if (program.args.length === 0) {
   console.log(
-    "Usage: node add-new-page.js <page-name> <page-title> <page-description> <page-languages>"
+    "Usage: node add-new-page.js <page-name> <page-title> <page-description> <page-languages>",
   );
   process.exit(1);
 }
 
-
 /* =================== Validate the arguments ================= */
-
 
 if (!pageName) {
   console.error("Please provide the page name.");
@@ -65,7 +63,7 @@ if (!pageLanguages) {
 // Check if the page languages are valid and supported by checking the translations directory if the language file .json exists
 const pageLanguagesArray = pageLanguages.split(",");
 const translationsDir = fs.readdirSync(
-  path.resolve(__dirname, "../translations")
+  path.resolve(__dirname, "../translations"),
 );
 const supportedLanguages = translationsDir.map((file) => file.split(".")[0]);
 
@@ -95,7 +93,7 @@ fs.writeFileSync(
     </body>
 </html>`,
   "utf8",
-  (err) => console.log(err)
+  (err) => console.log(err),
 );
 
 // Create the page config file
@@ -109,5 +107,5 @@ fs.writeFileSync(
   ab_testing: false,
 }`,
   "utf8",
-  (err) => console.log(err)
+  (err) => console.log(err),
 );
