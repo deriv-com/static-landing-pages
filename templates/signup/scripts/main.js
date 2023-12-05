@@ -261,7 +261,7 @@ window.onload = async () => {
     subscribeToChanges: true,
     backgroudSync: true,
     attributes: {
-      id: rudderAnalytics.getAnonymousId(),
+      id: rudderanalytics.getAnonymousId(),
       country: window.navigator.language,
       device_type: isMobile() ? "mobile" : "desktop",
       user_language: window.location.pathname.split("/")[2],
