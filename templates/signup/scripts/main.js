@@ -111,8 +111,8 @@ const methods = [
 ];
 for (var i = 0; i < methods.length; i++) {
   var method = methods[i];
-  rudderanalytics[method] = (function(methodName) {
-    return function() {
+  rudderanalytics[method] = (function (methodName) {
+    return function () {
       rudderanalytics.push(
         [methodName].concat(Array.prototype.slice.call(arguments)),
       );
@@ -237,29 +237,35 @@ const loginUrl = (platform) => {
 };
 
 window.onload = async () => {
-  document.querySelectorAll(".social-media-login").forEach((e) => {
-    e.addEventListener("click", () => {
-      const platform = e.getAttribute("data-platform");
-      window.location.href = loginUrl(platform);
-    });
-  });
-
   // Create a GrowthBook instance
   const gb = new growthbook.GrowthBook({
     apiHost: process.env.GROWTHBOOK_API_HOST,
+    streamingHost: process.env.GROWTHBOOK_API_HOST,
     clientKey: process.env.GROWTHBOOK_CLIENT_KEY,
     enableDevMode: true,
     subscribeToChanges: true,
+    backgroudSync: true,
     attributes: {
       id: "123",
       country: "US",
     },
+    onFeatureUsage: (exp, result) => {
+      console.log("heeeelo", exp, result);
+      if (exp === "signup_provider_sequence") {
+        const defaultFeatureValue = {
+          sequence: ["google", "facebook", "apple"],
+          stack: "vertical",
+        };
+
+        renderFeatures(result.value ? result.value : defaultFeatureValue);
+      }
+    },
     trackingCallback: (experiment, result) => {
       is_under_experiment = true;
 
-      console.log("Experiment Viewed", {
-        experimentId: experiment.key,
-        variationId: result.key,
+      console.log({
+        experiment,
+        result,
       });
 
       if (experiment.key === "aa-test-js-redirect") {
@@ -279,27 +285,40 @@ window.onload = async () => {
     },
   });
 
-  await gb.loadFeatures();
-
-  const signup_provider_sequence = gb.getFeatureValue(
-    "signup_provider_sequence",
-    { sequence: ["google", "facebook", "apple"], stack: "vertical" },
-  );
-
-  signup_provider_sequence.sequence.forEach((provider) => {
-    const is_visible = gb.isOn(`signup_provider_visible__${provider}`);
-
-    if (!is_visible) {
-      return;
-    }
-
-    renderButton(provider);
+  await gb.loadFeatures({
+    autoRefresh: true,
   });
 
-  if (signup_provider_sequence.stack === "horizontal") {
-    formElementContainer.classList.add("flex-row");
-    formElementContainer.classList.remove("flex-col");
-  }
+  const renderFeatures = (signup_provider_sequence) => {
+    formElementContainer.innerHTML = "";
+
+    signup_provider_sequence.sequence.forEach((provider) => {
+      renderButton(provider);
+    });
+
+    if (signup_provider_sequence.stack === "horizontal") {
+      formElementContainer.classList.add("flex-row");
+      formElementContainer.classList.remove("flex-col");
+    } else if (signup_provider_sequence.stack === "vertical") {
+      formElementContainer.classList.add("flex-col");
+      formElementContainer.classList.remove("flex-row");
+    }
+
+    document.querySelectorAll(".social-media-login").forEach((e) => {
+      e.addEventListener("click", () => {
+        const platform = e.getAttribute("data-platform");
+        window.location.href = loginUrl(platform);
+      });
+    });
+  };
+
+  // setting the feature change listerner
+  gb.setRenderer(() => {
+    // this will get the feature value in order to trigger the latest feature usage callback
+    gb.getFeatureValue("signup_provider_sequence");
+  });
+
+  gb.refreshFeatures();
 
   if (!is_under_experiment) {
     document.querySelector("body").classList.remove("hidden");
