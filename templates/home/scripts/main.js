@@ -218,10 +218,10 @@ function fckbx_n1() {
 async function f_submit_btn_n1() {
   const email = email_field_n1.value;
   if (is_emailValid(email) && ckbx_n1.checked == true) {
-    const bro = await rudderanalytics.track("signup_redirect_from_lead_pages");
-    console.log("track signup_redirect_from_lead_pages", bro);
+    await rudderanalytics.track("signup_redirect_lp_home_page");
+
     const verify_email_req = getVerifyEmailRequest(email);
-    console.log(verify_email_req);
+
     window.ws.send(JSON.stringify(verify_email_req));
   } else {
     if (ckbx_n1.checked == false) {
