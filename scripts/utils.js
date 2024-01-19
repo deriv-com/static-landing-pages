@@ -143,6 +143,7 @@ const generateIndexPage = () => {
     const document = dom.window.document;
     const link = document.createElement("a");
     link.href = pagePath;
+    link.style = 'max-width: fit-content;'
     link.innerHTML = pagePath;
     document.body.appendChild(link);
 
