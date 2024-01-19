@@ -2,6 +2,11 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const crc32 = require("crc-32").str;
 
+/**
+ * This function extracts all the strings from the HTML file
+ * @param {*} input_file - HTML file as string
+ * @returns {Array} - Array of strings
+ */
 const getStringsFromHtmlFiles = (input_file) => {
   const dom = new JSDOM(input_file);
 
@@ -9,9 +14,7 @@ const getStringsFromHtmlFiles = (input_file) => {
   const document = dom.window.document;
 
   const messages = [];
-  const el_translations = document.getElementsByClassName(
-    "el__t_string__el"
-  );
+  const el_translations = document.getElementsByClassName("el__t_string__el");
 
   Array.from(el_translations).forEach((el_translation) => {
     const translation_str = el_translation.innerHTML
@@ -24,6 +27,16 @@ const getStringsFromHtmlFiles = (input_file) => {
   return messages;
 };
 
+/**
+ * This function inserts the strings into the HTML file and returns the HTML file as string with the translated strings inserted into it 
+ * @param {*} input_file - HTML file as string
+ * @param {*} translation_object - Object with key as crc32 hash of the string and value as translated string
+ * @param {*} lang - Language of the HTML file
+ * @param {*} favicon - Boolean to check if the HTML file needs favicon
+ * @param {*} thirdparty_scripts - Array of third party scripts
+ * @param {*} page_scripts - Array of page scripts written in JS that needs to be minified and added to the HTML file
+ * @returns 
+ */
 const insertStringsToHtmlFile = (
   input_file,
   translation_object,
@@ -36,9 +49,7 @@ const insertStringsToHtmlFile = (
 
   const document = dom.window.document;
 
-  const el_translations = document.getElementsByClassName(
-    "el__t_string__el"
-  );
+  const el_translations = document.getElementsByClassName("el__t_string__el");
 
   // if favicon is true, add a link tag with favicon href
   if (favicon) {
@@ -92,7 +103,56 @@ const insertStringsToHtmlFile = (
   return dom.serialize();
 };
 
+
+/**
+ * Generates an index page with links to all pages
+ * @returns {Object} { page: { html: string }, addLink: (pagePath: string) => void }
+ */
+const generateIndexPage = () => {
+  const content = {
+    html: `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Static landing pages pndex | Deriv</title>
+        <meta name="description" content="Index page for all static pages exists">
+        <style>
+            body {
+                margin: 1rem;
+                display: flex;
+                flex-direction: column;
+            }
+
+            a {
+                margin: 0.5rem 0;
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+    <h1>Index of pages</h1>
+    </body>
+    </html>
+    `,
+  };
+
+  const addLink = (pagePath) => {
+    const dom = new JSDOM(content.html);
+    const document = dom.window.document;
+    const link = document.createElement("a");
+    link.href = pagePath;
+    link.innerHTML = pagePath;
+    document.body.appendChild(link);
+
+    content.html = dom.serialize();
+  };
+
+  return { page: content, addLink };
+};
+
 module.exports = {
   getStringsFromHtmlFiles,
   insertStringsToHtmlFile,
+  generateIndexPage,
 };
