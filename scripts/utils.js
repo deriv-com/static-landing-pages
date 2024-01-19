@@ -115,7 +115,7 @@ const generateIndexPage = () => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Static landing pages pndex | Deriv</title>
+        <title>Deriv | Static landing pages index</title>
         <meta name="description" content="Index page for all static pages exists">
         <style>
             body {
