@@ -106,7 +106,8 @@ const insertStringsToHtmlFile = (
 
 /**
  * Generates an index page with links to all pages
- * @returns {Object} { page: { html: string }, addLink: (pagePath: string) => void }
+ * 
+ * @returns {Object} { page: { html: string }, addLink: (pagePath: string) => void }, addHeading: (pageName: string) => void }
  */
 const generateIndexPage = () => {
   const content = {
@@ -148,7 +149,17 @@ const generateIndexPage = () => {
     content.html = dom.serialize();
   };
 
-  return { page: content, addLink };
+  const addHeading = (pageName) => {
+    const dom = new JSDOM(content.html);
+    const document = dom.window.document;
+    const heading = document.createElement("h2");
+    heading.innerHTML = pageName;
+    document.body.appendChild(heading);
+
+    content.html = dom.serialize();
+  };
+
+  return { page: content, addLink, addHeading };
 };
 
 module.exports = {

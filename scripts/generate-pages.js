@@ -5,7 +5,7 @@ const UglifyJS = require("uglify-js");
 
 require("dotenv").config();
 
-const { addLink, page } = generateIndexPage();
+const { addLink, page, addHeading } = generateIndexPage();
 
 try {
   fs.rmdirSync(
@@ -32,6 +32,8 @@ templatesDir.forEach((page) => {
     path.resolve(__dirname, `../templates/${page}/index.html`),
     "utf-8"
   );
+
+  addHeading(page.toLocaleUpperCase());
 
   const pageConfig = require(`../templates/${page}/page.config.js`);
 
