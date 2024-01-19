@@ -28,14 +28,14 @@ const getStringsFromHtmlFiles = (input_file) => {
 };
 
 /**
- * This function inserts the strings into the HTML file and returns the HTML file as string with the translated strings inserted into it 
+ * This function inserts the strings into the HTML file and returns the HTML file as string with the translated strings inserted into it
  * @param {*} input_file - HTML file as string
  * @param {*} translation_object - Object with key as crc32 hash of the string and value as translated string
  * @param {*} lang - Language of the HTML file
  * @param {*} favicon - Boolean to check if the HTML file needs favicon
  * @param {*} thirdparty_scripts - Array of third party scripts
  * @param {*} page_scripts - Array of page scripts written in JS that needs to be minified and added to the HTML file
- * @returns 
+ * @returns {string} - HTML file as string with translated strings inserted into it
  */
 const insertStringsToHtmlFile = (
   input_file,
@@ -103,11 +103,21 @@ const insertStringsToHtmlFile = (
   return dom.serialize();
 };
 
+/**
+ * @typedef {Object} PageContent
+ * @property {string} html - HTML page as string
+ */
+
+/**
+ * @typedef {Object} PageUtils
+ * @property {PageContent} page - HTML page object
+ * @property {Function} addLink - Adds a link to the page
+ * @property {Function} addHeading - Adds a heading to the page
+ */
 
 /**
  * Generates an index page with links to all pages
- * 
- * @returns {Object} { page: { html: string }, addLink: (pagePath: string) => void }, addHeading: (pageName: string) => void }
+ * @returns {PageUtils}
  */
 const generateIndexPage = () => {
   const content = {
@@ -143,7 +153,7 @@ const generateIndexPage = () => {
     const document = dom.window.document;
     const link = document.createElement("a");
     link.href = pagePath;
-    link.style = 'max-width: fit-content;'
+    link.style = "max-width: fit-content;";
     link.innerHTML = pagePath;
     document.body.appendChild(link);
 
