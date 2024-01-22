@@ -1,10 +1,11 @@
 const path = require("path");
 const fs = require("fs");
-const { insertStringsToHtmlFile } = require("./utils");
+const { insertStringsToHtmlFile, generateIndexPage } = require("./utils");
 const UglifyJS = require("uglify-js");
 
-
 require("dotenv").config();
+
+const { addLink, page, addHeading } = generateIndexPage();
 
 try {
   fs.rmdirSync(
@@ -18,7 +19,7 @@ try {
   );
 } catch (err) {
   console.log("-------------------------");
-  console.log('Creating pages directory');
+  console.log("Creating pages directory");
   console.log("-------------------------");
 }
 
@@ -31,6 +32,8 @@ templatesDir.forEach((page) => {
     path.resolve(__dirname, `../templates/${page}/index.html`),
     "utf-8"
   );
+
+  addHeading(page.toLocaleUpperCase());
 
   const pageConfig = require(`../templates/${page}/page.config.js`);
 
@@ -77,13 +80,15 @@ templatesDir.forEach((page) => {
 
     const outputDir = `./pages/${page}/${language}`;
 
+    addLink(`/${page}/${language}`);
+
     fs.mkdirSync(outputDir, { recursive: true });
 
     const outputFile = `${outputDir}/index.html`;
 
     fs.writeFileSync(outputFile, renderedHTML, "utf-8");
 
-    console.log(`Generated ${language} HTML file: ${outputFile}`);
+    console.log(`✅ Generated ${language} HTML file: ${outputFile}`);
   }
 
   if (favicon) {
@@ -95,3 +100,5 @@ templatesDir.forEach((page) => {
     );
   }
 });
+
+fs.writeFileSync("./pages/index.html", page.html, "utf-8");
