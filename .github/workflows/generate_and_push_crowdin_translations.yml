@@ -40,7 +40,7 @@ jobs:
         shell: bash
 
       - name: Synchronize with Crowdin
-        uses: crowdin/github-action@v1
+        uses: crowdin/github-action@c953b17499daa6be3e5afbf7a63616fb02d8b18d
         with:
           upload_sources: true
           upload_translations: true
