@@ -176,26 +176,38 @@
     return init(function () { });
   });
 
-  const CookieStorage = function (cookie_name, cookie_domain = "") {
-    const hostname = window.location.hostname;
-    const is_deriv_com = String(hostname).includes("deriv.com");
-    const is_binary_sx = String(hostname).includes("binary.sx");
+var CookieStorage = function(cookie_name, cookie_domain = '') {
+    // List of allowed domains for security checks defined within the function
+    const allowedHosts = ['deriv.com', 'binary.sx'];
+
+    // Retrieves the hostname from the browser's location
+    var hostname = window.location.hostname;
+    // Extracts the main domain part to handle subdomains properly
+    var parsedHostname = hostname.split('.').slice(-2).join('.');
+    // Check if the parsed hostname is one of the allowed domains
+    var isAllowedParsedHostname = allowedHosts.includes(parsedHostname);
+    // Validate the provided cookie_domain against the allowed hosts
+    var isAllowedCookieDomain = cookie_domain && allowedHosts.includes(cookie_domain);
 
     this.initialized = false;
     this.cookie_name = cookie_name;
-    if (is_deriv_com) {
-      this.domain = "deriv.com";
-    } else if (is_binary_sx) {
-      this.domain = "binary.sx";
+
+    // Determine the domain based on security checks
+    if (isAllowedParsedHostname) {
+        this.domain = parsedHostname;
+    } else if (isAllowedCookieDomain) {
+        this.domain = cookie_domain;
     } else {
-      this.domain = cookie_domain ?? String(hostname);
+        // Default to the first known safe domain if no valid domain is provided or parsed
+        this.domain = allowedHosts[0];
     }
-    this.path = "/";
-    this.same_site = "none";
-    this.is_secure = true;
-    this.expires = new Date("Thu, 1 Jan 2037 12:00:00 GMT");
+
+    this.path = '/';
+    this.same_site = 'None';
+    this.is_secure = true; // Secure flag must be true if same_site is 'None'
+    this.expires = new Date('Thu, 1 Jan 2037 12:00:00 GMT');
     this.value = {};
-  };
+};
 
   CookieStorage.prototype = {
     initialize() {
