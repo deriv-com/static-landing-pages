@@ -269,14 +269,13 @@ async function f_submit_btn_n1() {
 }
 
 function is_emailValid(email) {
-  if (
-    /^\w+([!#$%&'*+-/=?^_`{|}~\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
-      email
-    )
-  )
+  const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (emailPattern.test(email)) {
     return true;
+  }
   return false;
 }
+
 
 /// social login
 const getDataLink = (data) => {
